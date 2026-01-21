@@ -1,0 +1,1316 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<title>SeferTakip - 2022.v2.2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<style>
+body{font:15px/1.6 'Roboto Condensed',  sans-serif;font-weight: 600;line-height:1.5;}
+@keyframes don{ 40% {transform: rotateY(540deg);}}
+@keyframes kay{	0%{left:100%; transform:rotate(-25deg);}
+	48%{left:-1%;transform:rotate(-10deg);}
+	50%{left:-1%;transform:rotateY(180deg) rotate(-10deg);}
+	52%{left:-1%;transform:rotateY(180deg) rotate(-25deg);}
+	100%{left:100%;transform:rotateY(180deg) rotate(-10deg);}
+}
+.buton{font-size:18px;padding:10px 3px;}
+button:active, .buton:active{
+  background-color: #3e8e41;
+  box-shadow: 0 3px #666;
+  transform: translateY(1px);
+}
+.logo{
+  z-index: 100;
+  position:absolute;
+  animation:don 3s infinite;
+}
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+/* Internet Explorer 10 */
+display:-ms-flexbox;
+-ms-flex-pack:center;
+-ms-flex-align:center;
+
+/* Firefox */
+display:-moz-box;
+-moz-box-pack:center;
+-moz-box-align:center;
+
+/* Safari, Opera, and Chrome */
+display:-webkit-box;
+-webkit-box-pack:center;
+-webkit-box-align:center;
+
+/* W3C */
+display:box;
+box-pack:center;
+box-align:center;
+  opacity: 0.7;
+  background-color: #fff;
+  z-index: 120;
+  text-align: center;
+}
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; color:blue;}
+a:hover { text-decoration: underline;}
+a:active { text-decoration: underline; }
+
+.iptal{margin-top:2px;display:flex;width:100%;}
+.iptal a:link { text-decoration: none;color:red }
+.iptal a:visited { text-decoration: none; color:red;}
+.iptal a:hover { text-decoration: underline; }
+.iptal a:active { text-decoration: underline; }
+
+input{font-size:22px;height:45px;}
+#kalkis, #varis{display:block}
+.span-cont{position:absolute;max-width:250px;min-width:250px;font-weight:200;line-height:1.8;font-size:18px;background:azure;box-shadow:3px 5px lightgrey;text-align:left}
+.ul-cont{padding:0 4px;max-height:400px;overflow-y:auto;overflow-x:hidden;margin:3px auto 0 auto; border-left:1px solid gray;border-bottom:1px solid gray}
+.liste{list-style:none;cursor:pointer;overflow:hidden;min-width:250px;padding-left:6px;}
+.liste:hover, .liste-active{background:cadetblue; color:white;font-weight:600}
+.check{margin:0px 3px;padding:0px;outline:none;width:20px;vertical-align:middle}
+.top{display:flex;flex-wrap:nowrap;max-height:50px}
+.button-div, .tarih-div, .rep-div{display:inline-flex}
+.gun_dy{height:25px;background-color:lightblue;border-radius:6px;outline:none;align-self:center;box-shadow: 0 6px #999;}
+.rep{height:25px;background-color:lightblue;border-radius:6px;outline:none;font-size:18px;box-shadow: 0 6px #999;}
+.inter{background-color:#d94e7a}
+.rep-div{align-self:center;}
+#ara{padding:10px;}
+.kalkis_inp, .varis_inp{width:200px;}
+#data{margin-top:10px;min-width:99%;max-width:99%;display:flex;}
+.flex{display:flex}
+.tarih-div{display:flex; margin:0 5px;}
+.i_button{width:20px;}
+.g_button, .s_button, .a_button{height:15px;margin:0 2px}
+.g_button{background-color:black}
+.s_button{background-color:yellow}
+.a_button{background-color:purple}
+.mavi{color:blue;}
+.yesil{color:green}
+.bos{width:50px}
+.gizle{display:none}
+.aciklama{width:300px;text-align:center}
+.ind_border{border:1px solid black;}
+.ind_durak{width:180px;height:30px;}
+.ara{display:flex}
+.curr{background-color:#72a24d;color:white;}
+.hata{font-size:20px;color:red;}
+.iptal{font-size:16px;color:red;font-weight:600;}
+.iptal_over, .iptal_over a:link, .iptal_over a:visited{font-size:16px;color:red;font-weight:300;}
+.veri{font-size:16px;color:blue;margin-top:2px;font-weight:600;display:flex;width:100%;}
+.t_over{font-weight:300;color:#615b4b}
+.t_over a:link, .t_over a:visited{color:#615b4b}
+.veri:hover, .iptal:hover{background-color:gray;}
+.bilet-veri{width:fit-content;max-width:35%;overflow:hidden;display:inline;white-space:nowrap;margin-right:10px;}
+.veri1{min-width:65%;max-width:65%;overflow:hidden;display:inline;white-space:nowrap;margin-right:10px;}
+.veri2{min-width:10%;max-width:10%;display:inline;text-align:center;padding:0 2px}
+.veri22{width:40px;display:inline;text-align:center;padding:0 2px}
+.veri3{width:24%;display:inline;}
+.veri4{min-width:10%;max-width:10%;margin:0 5px}
+.rotar{min-width:10%;max-width:10%;font-size:13px;color:black;text-align:right;font-weight:200;overflow:hidden}
+.peron{width:130px;height:20px;overflow:hidden;color:black;padding:0 5px;}
+.foot{min-height:30px;}
+.ist-exp{background-color:#66b3ff;}
+.ist_exp{background-color:#6684f0;}
+.ist_exp a:link, .ist_exp a:visited{color:white;}
+.hata2{background-color:red}
+.ist-e5{background-color:lightgray;}
+.next_day, .next_day a:link, .next_day a:visited, .next_day a:hover{color:darkgreen}
+.popCont{position:fixed;top:0;width:100%;height:100%;z-index:100;display:flex;background-color:lightgray;
+	align-items:center;opacity:95%;flex-direction:column;overflow-y:scroll;}
+.plaka{height:100%;border:none}
+.rotar-pop{position:fixed;width:400px;min-height:100px;height:auto;z-index:100;background-color:lightgray;align-items:center;text-align:center}
+.frotar-pop{position:fixed;top:5%;left:30%;min-width:400px;width:auto;min-height:100px;height:auto;max-height:90%;z-index:100;background-color:lightgray;align-items:center;text-align:center;overflow-y:scroll}
+.seat-cont{position:fixed;top:5%;left:30%;min-width:400px;width:auto;min-height:100px;height:auto;max-height:90%;z-index:100;background-color:lightgray;align-items:center;text-align:center;overflow-y:scroll}
+.r_sat{width:400px;display:flex;margin-bottom:5px}
+.r_dur{width:200px;overflow:hidden}
+.r_sut{width:100px;}
+.max-fit{max-width:fit-content}
+.min-fit{min-width:fit-content}
+.r_tit{width:100%;color:#aa42f5;margin-bottom:15px;}
+.rclose{text-align:right;margin-right:10px;color:green}
+.cur{cursor:pointer;}
+.pl_detay{display:flex;font-size:25px;margin-top:50px;}
+.saatCont{width:100%;overflow-y:scroll;}
+.indCont{background:white;width:100%;overflow-y:scroll;}
+.saat_C{display:flex;}
+.saat_data, .saat_data2{display:flex;padding:5px;width:100%;background-color: #fff;border:1px solid black;}
+.saat_data2{background-color: #ffffe6;}
+.saat_durak{width:60%;margin:0 20px 0 10px;}
+.saat_sure{width:20%; margin:0 5px}
+.aktarma, .aktarma a:link, .aktarma a:visited{color:darkcyan}
+.kopyala{display:flex;height:40px;width:100px;align-items:center;justify-content:center;margin-left:3%;font-size:16px}
+#pdata{height:80%;display:block;text-align:center;}
+#pclose{width:110px;height:40px;margin:0 0 10px 15px;font-size:16px}
+#durum{width:auto;height:45px;align-items:center;font-size:18px;display:flex;margin-left:5px;}
+#toplam, #iptal_sayi{display:inline}
+#iptal_sayi{color:red}
+.pen1{width:99%}
+.pen2{min-width:49%}
+.pen3{min-width:32%}
+@media (min-width: 768px) {
+	#data1, #data2, #data3{font-size:18px;margin-left:20px;}
+}
+@media (max-width: 1024px){
+	.button-div{max-height:45px;}
+	.buton{font-size:15px; padding:0 3px;}
+	.veri1{min-width:60%}
+	#data1, #data2, #data3{font-size:18px;margin-left:20px;}
+}
+@media (max-width: 767px) {
+	#data1, #data2{font-size:18px;width:fit-content;margin-left:20px;}
+	.top{display:block;text-align:center;}
+	.varis-div, .kalkis-div, #durum, .ara, #ara{display:inline-block}
+	.span-cont{left:10%}
+	.tarih-div{display:inline-flex}
+	.buton{padding:0}
+	.trh, .kalkis_inp, .varis_inp{width:150px}
+	#_kalkis, #_varis{display:flex;text-align:left;}
+}
+@media(max-width: 510px){
+	.button-div{min-height:45px;}
+	.buton{font-size:15px; padding:0 3px;}
+	.veri1{min-width:60%}
+	.trh{width:fit-content}
+	#_kalkis, #_varis{display:flex;text-align:left;}
+	.ul-cont{font-weight:600}
+	.rep-div{margin-bottom:8px}
+	#data1{font-size:16px;max-width:99%;margin-left:5px;}
+	#data2, #data3{visibility:hidden;}
+	#durum{justify-content:center}
+}
+@media (min-width: 1367px){
+	#data1, #data2, #data3{font-size:18px;width:fit-content;margin-left:15px;}
+}
+@page{margin-top:50px;}
+
+@media print{
+	body {background:white}
+	.veri2, .veri4, .rotar, #durum, #eski, .veri22, .button-div, .gun_dy, .kalkis-div, .rep-div, .varis-div, .ara, .foot, .peron{display:none}
+	.top{display:flex;justify-content:end;}
+	.trh{border:none;}
+	.veri, .veri1{filter:grayscale(100%);color:black;font-size:18px;margin:0 0 1px 0;min-width:fit-content;}
+	.veri{border-bottom:1px black solid}
+	#data{margin:0;
+		width:100%;
+		display:grid;
+		grid-template-columns:50% 99%;
+		grid-gap:0 10px;
+		justify-content:flex-start;
+	}
+	#data1, #data2, #data3{margin:0;min-width:fit-content;}
+	#data1{grid-column:1;min-width:95%}
+	#data2{grid-column:1;min-width:95%}
+	#data3{grid-column:2;grid-row:1;;min-width:95%}
+}
+</style>
+
+</head>
+<body tabindex="-1">
+<div class="top">
+	<div class="button-div">
+		<button class="buton" id="excel" tabindex="-1" accesskey="6" title="Alt+6" name="btn" onclick=toExcel()>E</button>
+		<button class="buton" id="gece" tabindex="-1" accesskey="1" title="Alt+1" name="btn" onclick=v_sec(this.id) id="gece">00:00-08:00</button>
+		<button class="buton" id="sabah" tabindex="-1" accesskey="2" title="Alt+2" name="btn" onclick=v_sec(this.id) id="sabah">08:00-16:00</button>
+		<button class="buton" id="aksam" tabindex="-1" accesskey="3" title="Alt+3" name="btn" onclick=v_sec(this.id) id="aksam">16:00-24:00</button>
+		<button class="buton" id="iptal" tabindex="-1" accesskey="4" title="Alt+4" name="btn" onclick=v_sec(this.id) id="iptal">İptaller</button>
+	</div>
+	<div class="tarih-div">
+		<button class="gun_dy" tabindex="-1" accesskey="q" title="Alt+Q" onclick=date_ch("dun")><<</button>
+		<input class="trh" tabindex="-1" type="date" id="tarih" min="2019-12-01">
+		<button class="gun_dy" tabindex="-1" accesskey="w" title="Alt+W" onclick=date_ch("yarin")>>></button>
+	</div>
+	<div class="kalkis-div">
+		<input class="kalkis_inp" tabindex="1" id="kalkis" list="_kalkis" onfocus='sec(this.id)' onclick='sec(this.id)'/>
+		<span name="kalkis" id="_kalkis"></span>
+	</div>
+	<div class="rep-div">
+		<button class="rep" tabindex="-1" accesskey="r" title="Alt+R" onclick=durak_deg()><=></button>
+	</div>
+	<div class="varis-div">
+		<input class="varis_inp" tabindex="2" id="varis" list="_varis" onfocus='sec(this.id)' onclick='sec(this.id)'/>
+		<span name="varis" id="_varis"></span>
+	</div>
+	<input class="check" tabindex="-1" type="checkbox" id="bilet" onclick='bgoster(this.id)' />
+	<div class="ara">
+		<input type="submit" tabindex="-1" class="buton" name="btn" title="Enter" onclick=v_sec(this.id) id="ara" value="Ara" />
+		<input class="check" tabindex="-1" type="checkbox" id="eski" title="Eski Ver." />
+	</div>
+	<div id="durum"><div id="toplam"></div><div id="iptal_sayi"></div></div>
+</div>
+<div id="data">
+<div id="data1"></div>
+<div id="data2"></div>
+<div id="data3"></div>
+</div>
+<div class="foot"></div>
+
+<script>
+//Son düzenleme 17.07.2022
+ndurak=[{name:"Hepsi",city_id:"1",station_id:"1",sid:"1",cid:"1"},{name:"Ordu",city_id:"bb800fec-91ea-4519-bf63-3136734f43fe",station_id:"9bdf3143-b62d-4e07-aa38-365389247035",sid:"47641",cid:"42372"},{name:"Ankara",city_id:"a02797e9-d4ca-4162-94ae-7631b8207030",station_id:"9b6a837a-3ecb-11ea-8017-02437075395e",sid:"48831",cid:"40381"},{name:"İstanbul Esenler",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"9b6a8316-3ecb-11ea-8017-02437075395e",sid:"48041",cid:"40151"},{name:"İstanbul Alibeyköy",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"9b6a8331-3ecb-11ea-8017-02437075395e",sid:"47991",cid:"40151"},{name:"İstanbul Dudullu",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"9b6a834c-3ecb-11ea-8017-02437075395e",sid:"48021",cid:"40151"},{name:"İstanbul",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"9b6a8316-3ecb-11ea-8017-02437075395e",sid:"48041",cid:"40151"},{name:"Bursa",city_id:"ab21812d-a350-45ee-b2c0-c4af9f3b6943",station_id:"9b6a8419-3ecb-11ea-8017-02437075395e",sid:"48921",cid:"41702"},{name:"İzmir",city_id:"e76a49b0-c196-4c4e-92ce-9f63f14adc16",station_id:"9b6a8396-3ecb-11ea-8017-02437075395e",sid:"49011",cid:"42122"},{name:"Antalya",city_id:"c55dec45-ee16-407d-9371-b71f28fbbfb8",station_id:"9b6c0630-3ecb-11ea-8017-02437075395e",sid:"48841",cid:"40391"},{name:"Samsun",city_id:"2108675d-00c2-40ca-94c6-0f61afc13b10",station_id:"2884d512-3bd5-435f-a893-06374f83bb22",sid:"47612",cid:"42412"},{name:"Çorum",city_id:"4f817558-0ebe-4e05-b28d-bace8f02ce1e",station_id:"124826fc-0257-47b3-9eda-8b8a9727e961",sid:"48961",cid:"41772"},{name:"Afyon",city_id:"f3bd32db-c308-48c9-aaf0-3d0a5527666b",station_id:"4851a320-4763-486e-9810-e86e4e95affb",sid:"48771",cid:"40161"},{name:"Eskişehir",city_id:"c3831837-1eb1-4e93-8583-16c5e332f7d4",station_id:"a683daa0-904b-4fe5-ad47-029e84f171c6",sid:"47751",cid:"41942"},{name:"Çanakkale",city_id:"4818f4e1-c4b8-43fd-b72c-2f57a38da581",station_id:"9b6c264d-3ecb-11ea-8017-02437075395e",sid:"48951",cid:"41712"},{name:"Kavak",city_id:"8bfd4e4a-a2c4-433f-87ec-7fc3fc717aa8",station_id:"02827b43-ddbe-46a9-81d7-af3931d34fcf",sid:"49871",cid:"41191"},{name:"Kozan",city_id:"e9923717-5354-4064-be86-3b9c49a84a4c",station_id:"030a6dd8-2019-4e85-973a-5f1f85380f3d",sid:"48271",cid:"42542"},{name:"Bucak",city_id:"bb8fe35c-018b-47e6-bbb8-de27133c1de1",station_id:"038b828e-985f-4996-98fb-26ddf98294b1",sid:"48061",cid:"41662"},{name:"Didim",city_id:"f749262a-3dc1-4aa6-a512-8a5e95b1c231",station_id:"64f00d87-d248-43c9-9c81-54ba247b630b",sid:"48691",cid:"41812"},{name:"Mecitözü",city_id:"f233f0a9-2e01-4f42-a565-852495498506",station_id:"03ca3805-30ff-4857-aa25-48d10d5576d1",sid:"54091",cid:"44411"},{name:"Çivril",city_id:"cee0b6db-2319-4ffa-9762-cf6b8715e0ba",station_id:"0705ba8c-97cc-4c26-9431-cd3459e52a5b",sid:"48711",cid:"41762"},{name:"Altınova",city_id:"8a301c78-ee75-474f-9323-d3f27bb787de",station_id:"f8b9855c-035f-4c39-9f52-a25a63d7d4bd",sid:"49561",cid:"46531"},{name:"Bandırma",city_id:"3f0fe13a-7156-4767-8ab7-d8cdbd1151ae",station_id:"0961f080-8ff0-4949-96aa-91e056e8d195",sid:"47881",cid:"41552"},{name:"Köyceğiz",city_id:"c6befcbe-ef62-41ce-85d7-da8bfc2913d4",station_id:"6d4ea8e1-ff2a-491b-965e-dc48fb375a6d",sid:"49921",cid:"41241"},{name:"Zonguldak",city_id:"1f612758-7f42-4802-bff2-aa64a9f31062",station_id:"0affb0a0-fb3a-4592-a2b0-c6f9944d0a6e",sid:"47502",cid:"42522"},{name:"Özdere",city_id:"b0106af1-7e8f-490c-a4a0-d47933949401",station_id:"4a31f451-2989-4636-9428-c447ed7e44f9",sid:"49331",cid:"41331"},{name:"Uluborlu",city_id:"c04a009a-1aef-406e-8f7f-58a1d9609b1d",station_id:"0c64d797-8129-464c-bcf0-fd54fcbce187",sid:"49121",cid:"40591"},{name:"Söke",city_id:"1b06845f-aeae-44e7-9084-70cdac0ec062",station_id:"0c9f3908-4fcc-44da-8921-63a5eb3653af",sid:"48461",cid:"42732"},{name:"Beşevler",city_id:"a4a0e71a-7f23-4129-b9a8-c3fbadefe718",station_id:"0cd9d27d-e7af-426f-939a-7b8381816448",sid:"56851",cid:"47241"},{name:"Ardeşen",city_id:"8f1f6993-85a0-49a1-92e0-7e2073fcb740",station_id:"100f2039-85e3-4c65-9cdb-b0a8e25f6c06",sid:"52901",cid:"40641"},{name:"Kütahya",city_id:"d5e10028-98d7-4206-9c53-1fb417bb6a4c",station_id:"110982be-3fc4-4d00-8b34-9d335811d04b",sid:"47741",cid:"42292"},{name:"Edremit",city_id:"fde63741-10b0-4fdd-ac86-5d08bf32e6e4",station_id:"1121bee9-4b52-4484-9c2c-5c8a79073b86",sid:"48211",cid:"41852"},{name:"Güzelçamlı",city_id:"3128b48b-9b5f-4dad-b8f5-4c3f40dca35b",station_id:"1223d8a2-66ce-4245-ac8c-e6dd03ee2ec7",sid:"52411",cid:"0"},{name:"Göcek",city_id:"070fc48f-e5c9-4715-8fe8-2aa6eb885ced",station_id:"1256d285-cdf7-48d4-9872-2dc4bac9e12c",sid:"52841",cid:"41962"},{name:"Lapseki",city_id:"5daafd9f-cc51-480c-ac50-e4d621c26740",station_id:"15d935b8-7617-4d5b-abcf-99551ccc0d9a",sid:"49281",cid:"41281"},{name:"Gemlik",city_id:"cf38b84b-20d4-455c-8576-7f9e2031cb85",station_id:"16d368e0-521d-41f5-a756-9970bb37d697",sid:"48611",cid:"42002"},{name:"Akçay",city_id:"7631d8b0-5a32-4fde-b061-7ed91e4ac87b",station_id:"17ca2fb7-c790-426f-bb5d-bef2c232fe86",sid:"49071",cid:"40201"},{name:"Ayvalık",city_id:"d27a91d8-b616-4704-bb88-7d2a18e47647",station_id:"1983a1c5-ed70-4109-944f-0a134b8af978",sid:"47861",cid:"41522"},{name:"Eynesil",city_id:"b3fead9b-f38a-491d-a1d2-9af3218f06dc",station_id:"1a32603e-da75-40ea-8b44-4ea69b54bf0d",sid:"52361",cid:"44841"},{name:"Ilgın",city_id:"523150ec-7ff9-4414-b034-185078473a48",station_id:"1a8304bd-9483-4820-8936-0c99c4006234",sid:"48571",cid:"42072"},{name:"Gümüldür",city_id:"10060044-b4bb-4213-a7af-92dc2442976a",station_id:"1b2cad92-561c-4d1c-8ec7-18b6ce731dcf",sid:"51411",cid:"41041"},{name:"İznik",city_id:"7c2de6fe-59a8-4538-b951-7b8bc4487719",station_id:"1b41196d-316c-44f8-849e-aaa46004f996",sid:"49821",cid:"41161"},{name:"Tavşanlı",city_id:"baf5d4f4-892f-41b4-9082-f51efb67d49b",station_id:"1bf2aaa6-67e7-46b8-8720-78b09da49027",sid:"48491",cid:"42762"},{name:"Sungurlu",city_id:"28fb557c-9278-443e-88d4-00582b83683d",station_id:"1c265e90-2892-4424-a620-3f47d415446a",sid:"49501",cid:"41471"},{name:"Ahlat",city_id:"a4fac5e0-2b67-40ee-a72c-3c45dab4b573",station_id:"1cb2bd5a-9e4e-4ac5-b2e5-248cc3740690",sid:"51891",cid:"44681"},{name:"Cihanbeyli",city_id:"49fd3d7a-3ee8-4b16-a551-89335a76146d",station_id:"1cf7a963-539a-4251-a70b-660dfe9b5e8c",sid:"48721",cid:"41752"},{name:"Sorgun",city_id:"a5e26a99-9568-42d7-bae8-b879f894ed5e",station_id:"1e9fd78f-b99d-4795-97f7-7f76aac7e9f6",sid:"48471",cid:"42742"},{name:"Bafa",city_id:"ceffb11c-0205-4b63-a82a-6d7bee878c51",station_id:"1f2a4a09-8c15-4289-a88a-6d5174432720",sid:"52221",cid:"0"},{name:"Anamur",city_id:"e8d43ff0-260b-4972-9cd8-e5a648fa7641",station_id:"1ff05128-3ddd-4694-8e24-8379e8fee18e",sid:"52211",cid:"0"},{name:"Pazar",city_id:"3b2c874b-13c1-4e4d-bf19-b8b412f3c6ff",station_id:"20db26c8-b69f-426e-8411-c41462b87b14",sid:"49341",cid:"41351"},{name:"Yalvaç",city_id:"7ba5db15-01c4-4ebd-bcc9-eee171fb0db5",station_id:"211c7bd6-80ee-4606-bc1d-7ef5145e5671",sid:"49041",cid:"40551"},{name:"Emet",city_id:"6923a3e6-c1a9-4137-91f8-066f85727677",station_id:"218f787b-e614-4cfc-a303-133b37a15a39",sid:"49111",cid:"40891"},{name:"Artvin",city_id:"3fda97cc-e6b0-42a3-b425-e619374f61a3",station_id:"2395435d-57f2-49dc-b427-4ddec7e19b64",sid:"47841",cid:"41512"},{name:"Seydişehir",city_id:"8a9f9e48-ac91-416e-be99-0b5d5ab2aae5",station_id:"23bba75d-ce67-48d8-bf2a-88edde0a5456",sid:"52711",cid:"44911"},{name:"Sarayköy",city_id:"9932425d-eb07-4dcb-9b86-2300fe19c260",station_id:"24adb714-10a2-4daa-8bdc-d51c498058cd",sid:"49381",cid:"41381"},{name:"Ünye",city_id:"4f3a0386-3746-403b-b200-98538ec9f1ca",station_id:"25748412-69cb-4af1-b489-f77532fd9228",sid:"48541",cid:"42812"},{name:"Denizli",city_id:"674725ba-59dc-45d6-912e-26c27811f26c",station_id:"25a08e24-38fd-4807-83e6-27cca01ee285",sid:"48971",cid:"41792"},{name:"Bükreş",city_id:"40e110b4-8646-11e6-9066-549f350fcb0c",station_id:"54c7a569-1af8-4252-aa35-eba0ff50b89b",sid:"21868",cid:"6378"},{name:"Bozdoğan",city_id:"6e39d761-0dcf-470a-8ce5-08f20c5766d8",station_id:"2820c17c-1136-4e5e-9795-878b389879b2",sid:"52241",cid:"0"},{name:"İyidere Köprü",city_id:"23ad19d8-a617-4ca9-a54e-9548885f43a5",station_id:"2952767e-f409-465d-aafe-dbab4755c534",sid:"49811",cid:"41151"},{name:"Küçükkuyu",city_id:"850b61b3-1765-4ab1-9e23-d50a33a654a3",station_id:"298179d1-4dee-4532-b127-22cfc2f58cfd",sid:"49261",cid:"41261"},{name:"Borçka",city_id:"6d7c4116-8103-491d-9570-a499b078e775",station_id:"2cb7e690-b6e8-43bb-ab9d-45d61c03c5de",sid:"52891",cid:"44661"},{name:"Beşikdüzü",city_id:"722758a0-6eea-4dd8-a08e-af6e6596395e",station_id:"2e5bdffb-ff78-483c-905f-dedd957e9047",sid:"49961",cid:"40671"},{name:"M.kemal Paşa",city_id:"63ebeb00-1229-4f0f-9b68-6daae70a43e4",station_id:"2e634469-148b-45ca-8d47-b38c3a6c704c",sid:"48311",cid:"42582"},{name:"Çaldıran",city_id:"21fca5d4-8afe-466b-9bbc-dbaf85acf2b8",station_id:"2e65180f-2e8c-475c-9381-2db9f500fea6",sid:"52311",cid:"44771"},{name:"Hopa",city_id:"51b909cf-7a54-4135-b0e4-93192f00bb29",station_id:"3021be93-b669-4fef-9986-905a589b727a",sid:"49781",cid:"41101"},{name:"Kocaeli",city_id:"691965bc-16a8-452a-bf36-cde541c87fa1",station_id:"3041155e-4181-441f-9b87-afd00deb5ea3",sid:"47911",cid:"42262"},{name:"Erzin",city_id:"0e148684-803c-4adc-8de3-58e830c0fe82",station_id:"30b46f25-b145-4483-9994-a19664bd979a",sid:"49231",cid:"40931"},{name:"Erdek",city_id:"a2d57539-5ce2-405b-ac44-9be8807f9c08",station_id:"322a88a7-82b3-4cd5-be87-5e4db77843ec",sid:"49201",cid:"40911"},{name:"İspir",city_id:"3ebcc912-5f0d-4283-9aac-d749320f9809",station_id:"32999ef8-9ed9-456a-a7f7-b9f6664e8e73",sid:"49801",cid:"0"},{name:"Dörtyol",city_id:"f2e2a606-4a14-4e06-a490-fc469a560e37",station_id:"32babc0f-b9e6-4c9a-a9b8-d323756bd937",sid:"48681",cid:"41822"},{name:"Hafik",city_id:"c929e2dd-efdc-487e-adb5-f059e7b1fa62",station_id:"339d7a1a-556c-4715-870b-9535033fc268",sid:"52421",cid:"44971"},{name:"Ereğli Kdz",city_id:"10cc5793-cd75-428b-87e5-c881cdce1e2f",station_id:"33dbb8ed-0a2f-4c99-942d-9634d635938d",sid:"48671",cid:"41902"},{name:"Havza",city_id:"e09404e5-130b-403d-87bf-51acc1d8fb81",station_id:"347163c8-88c6-46ec-a190-7cb04a85b76f",sid:"49771",cid:"41091"},{name:"Kozcağız",city_id:"15c2b332-cdae-45b8-8469-17b5a0c75d00",station_id:"349319e6-3ea6-435f-8090-8882a72cc1b1",sid:"49191",cid:"41251"},{name:"Suşehri",city_id:"d8432fce-74f2-4b2a-be91-c19b9f7ae343",station_id:"35c07273-4f99-4573-a364-4c2691264c87",sid:"49531",cid:"41491"},{name:"Alifuatpaşa",city_id:"325d603a-a693-4266-a890-4232ad9c23c9",station_id:"35caa306-4cc2-4e76-b3c5-976089173f6d",sid:"56901",cid:"47221"},{name:"İskenderun",city_id:"4afd6363-40d7-4a1f-91f5-0749df4afdd4",station_id:"36753131-9cf9-4f29-b247-689e6041c197",sid:"47971",cid:"42102"},{name:"Aydın",city_id:"a64ed91e-07a8-4705-ade0-6b22a9920b00",station_id:"3cba46e7-e49d-4d99-a624-58f21f3b3d25",sid:"48851",cid:"40451"},{name:"Turgutreis",city_id:"a8aa815e-ba23-451f-92c4-ab2b4eead4df",station_id:"3d153799-198a-4da6-88fa-9db22a0b7988",sid:"52151",cid:"45051"},{name:"Didim Mavişehir",city_id:"f749262a-3dc1-4aa6-a512-8a5e95b1c231",station_id:"3db33844-a376-459d-9eeb-7c8c9b326398",sid:"52121",cid:"41812"},{name:"Bartın",city_id:"df43c047-f545-4dc5-af0c-a5ee0e534cd7",station_id:"3de9ac60-71bf-4335-8843-96a8e7f4dc9c",sid:"47891",cid:"41562"},{name:"Menemen",city_id:"c3d2030c-c158-49b2-a6c7-eb432b9a399c",station_id:"3e55c9a2-b27c-4076-94fc-40fd45ed4696",sid:"48331",cid:"42602"},{name:"Çarşıbaşı",city_id:"8ff61092-9362-4674-995e-1f0565f87623",station_id:"3f33226a-83f5-41c6-8ed6-ae8a90c7fcfd",sid:"50021",cid:"40731"},{name:"Karacabey",city_id:"9ab4c7bc-769b-40be-9aee-42e44cd8fdd9",station_id:"3fec49ae-6e02-42df-9735-676cdbb6da35",sid:"48201",cid:"42172"},{name:"Aydıncık",city_id:"e0f88baa-7eb0-433d-b3a0-344668c916e8",station_id:"3fec7f30-8e2f-4bc3-9d5f-22f3a239e4c4",sid:"54121",cid:"0"},{name:"Değirmendere",city_id:"a472cafd-caf2-4a6a-9389-1d62a002293c",station_id:"4128b7c8-d34b-40be-96bb-b53e64d3165b",sid:"56931",cid:"42022"},{name:"Acıpayam",city_id:"492595f0-eea8-48c4-8a77-67c1a9b5250e",station_id:"41bb65fe-f39a-4d57-bb40-8c0d3475083c",sid:"52201",cid:"0"},{name:"Muğla",city_id:"0194cdd7-4d5c-463c-a879-519ca662ed93",station_id:"4229bb66-b910-479b-b5f3-0951e5183632",sid:"47681",cid:"42342"},{name:"Gelibolu",city_id:"82821742-cec4-48d1-a5aa-4488641ce026",station_id:"4251c0d2-978d-46f1-97fd-ac5d62a567ca",sid:"49571",cid:"40971"},{name:"Sivas",city_id:"5964cd1f-6542-4c90-8cd6-8fe6b71288be",station_id:"426551f2-6454-4fb9-bd5a-e4ab11966690",sid:"47602",cid:"42432"},{name:"Tokat",city_id:"e75eb0b9-1a45-445a-be77-7da548dd524d",station_id:"42b3a9f8-df10-4ef2-bdd9-88c006c76542",sid:"47592",cid:"42462"},{name:"Zara",city_id:"12e12453-d733-4e69-880d-10fdfc93173d",station_id:"42bf555a-c048-43ae-b4af-95e8b4821f0c",sid:"48811",cid:"40501"},{name:"Eskişehir Tcdd",city_id:"788e534b-2ab0-4b14-a591-b3233dd43ac2",station_id:"459eecba-2de0-4b61-b9d0-1d857d78a041",sid:"47781",cid:"47371"},{name:"Kahramanmaraş",city_id:"45d6f72b-c46a-4597-8860-e120290a12dc",station_id:"460943b0-fc9a-46ca-a3b4-383468485100",sid:"49031",cid:"0"},{name:"Amasya",city_id:"47b622e4-0ccd-43a2-a1b5-373088be97f6",station_id:"47490f14-70ed-435f-850d-b55de494873b",sid:"48821",cid:"40371"},{name:"Eleşkirt",city_id:"2671caa7-d3ad-44e9-9b24-f0b8fef68655",station_id:"47e917a6-dfaa-496e-915f-a2053dd6fbff",sid:"50181",cid:"40871"},{name:"Çarşamba",city_id:"29d4667c-4382-44f0-8aa5-1c40b476a7ea",station_id:"490ac90a-a10a-447d-8626-0e7c396b1a2c",sid:"48751",cid:"41722"},{name:"Muş",city_id:"e48d1eb8-cd11-499b-81b1-a90a41f0073e",station_id:"498baf52-8543-47f2-829c-b2bf41f8b5f5",sid:"47671",cid:"42282"},{name:"Alaçam",city_id:"238d7149-aba2-40f1-9342-70f65f8777bb",station_id:"498cee54-f9e0-421d-9683-7b4f95d57e73",sid:"49451",cid:"0"},{name:"Sarımsaklı",city_id:"b27915de-55f8-4974-85f1-aef180442e88",station_id:"4a467614-9e4b-4108-8d7d-e4e6a8b07d10",sid:"49391",cid:"41391"},{name:"Kumla",city_id:"496db96c-e8fc-434e-9731-a681458c5b7b",station_id:"4aaf2fcb-1d88-4314-bd41-fd16e5342b68",sid:"54061",cid:"45371"},{name:"Mekece",city_id:"1666d602-d2d5-4e08-93da-0000846ac4d0",station_id:"4bcbc4b1-f44c-4f1e-800d-eb903bf4a96d",sid:"56871",cid:"47311"},{name:"Düziçi",city_id:"33c1e770-80d9-4962-95fc-4af36c2e5801",station_id:"4d0e9530-1229-47de-b480-182796489815",sid:"48661",cid:"41842"},{name:"Selçuk",city_id:"748142cf-7179-4f6d-a907-2895aa3ac0ab",station_id:"4f6248d7-9d39-4dea-8474-dfff447b4312",sid:"49431",cid:"41431"},{name:"Senirkent",city_id:"3a1df68a-b770-4f88-a0c4-1b416406de62",station_id:"511a9eb9-9122-4eda-8a41-a9caa07ffa8f",sid:"49471",cid:"41441"},{name:"Kalkan",city_id:"c4594e7e-ed34-4610-b787-5776f44d6d2f",station_id:"52557a61-e698-4f04-94c7-78589be14740",sid:"49841",cid:"41171"},{name:"Mengen",city_id:"89027e5b-b8ba-4f7f-901d-c759bbdb1cac",station_id:"525c1a79-bd58-4c29-9549-2d2e64fc431d",sid:"49291",cid:"41291"},{name:"Payas",city_id:"0342b563-4ce7-4177-807a-15d0574fc291",station_id:"543d211a-d2c8-426a-bc2b-3828b95e842e",sid:"51441",cid:"43421"},{name:"Osmaniye",city_id:"9e176e85-3b08-4070-8b51-8c39e9d7bf3d",station_id:"5487157d-ed25-4a30-98ba-5b523c008287",sid:"47631",cid:"42382"},{name:"Taşköprü",city_id:"05eca3d2-ca3b-4134-821c-41289025b57c",station_id:"5608c4dc-c30f-4044-bc9b-77fcf557743f",sid:"49631",cid:"40481"},{name:"Mersin",city_id:"64ba3ac1-92bc-4c5a-9002-5e7a37f0bcf8",station_id:"5637ef60-15aa-4757-a462-6ac980701982",sid:"47691",cid:"0"},{name:"Tavas",city_id:"dc7f4621-2dc9-4fa1-ba50-47f7b8732da0",station_id:"5791abe2-e0f6-450b-a4c0-c6927c8641fa",sid:"49651",cid:"40491"},{name:"Solhan",city_id:"b664bc7c-ad5d-46c4-b740-9ffc8ec60db3",station_id:"57e2f52b-35e3-46f1-9baa-670589632482",sid:"49481",cid:"41451"},{name:"Şarkışla",city_id:"1a8cbe3c-0295-4f1c-92f7-5a73a97ad6c5",station_id:"57f3e00b-276e-47aa-8277-1e7bd806a7d1",sid:"49411",cid:"41411"},{name:"Kula Manisa",city_id:"06b265ff-7ae6-4938-905c-de39069a50f1",station_id:"58d121d4-69c9-48bd-adaf-b22f3166d09c",sid:"49271",cid:"41271"},{name:"Sinop",city_id:"681b4364-117d-4887-9494-6641b8dfc6cc",station_id:"592ec4f7-f5b3-456a-a645-61acd6484e85",sid:"47522",cid:"42422"},{name:"Muradiye",city_id:"68d4ecec-41b4-4c30-a3bd-0a627494356c",station_id:"5b1018f8-74bb-4d86-9150-ebee5339fd06",sid:"52571",cid:"45341"},{name:"Kapaklı",city_id:"cd9de6a1-3412-4cc2-b68a-fa8b1abd3958",station_id:"5cb86ec3-6cdf-4212-8d63-ccff59eff60e",sid:"54211",cid:"45931"},{name:"Erfelek",city_id:"97c236ef-679d-4d62-acb7-8cce2c55fb90",station_id:"5daa9759-6a22-4c99-9b76-2319ab93d92c",sid:"49211",cid:"40921"},{name:"Suluova",city_id:"009efd5c-5e8e-4fcd-9ce5-b161d1ccb84a",station_id:"5daba062-70ff-496c-aaf2-db0d8833ed14",sid:"49491",cid:"41461"},{name:"Merzifon",city_id:"61caf413-e56b-4551-9c54-bbde96bb7775",station_id:"5e1e273f-d0e9-422b-8a30-2613a119fc38",sid:"48341",cid:"42612"},{name:"Çiftlik",city_id:"8d4d346f-4a1d-4f1e-8090-03b560f19c65",station_id:"5eb01d33-81ba-4e8d-a992-1b940627e1fc",sid:"50101",cid:"0"},{name:"Pamukova",city_id:"bbe4a326-f528-4237-a303-7bea7c342f1d",station_id:"601bfda1-f6c2-4fee-b9d2-6d70ab0ab707",sid:"56891",cid:"47331"},{name:"Tarsus",city_id:"68f9872a-0cfb-4674-a31d-2f3029f4b602",station_id:"6084a808-9f58-4c10-bbf2-44c5b9b1843f",sid:"47582",cid:"0"},{name:"Nevşehir",city_id:"eb4f04cf-be98-40de-b759-a733246eecd5",station_id:"61348641-bdeb-411d-8443-cc3d95cdf56b",sid:"47661",cid:"42352"},{name:"Amasra",city_id:"56dd7e22-57ed-4165-bd25-0bc6821d0b00",station_id:"61afbd42-6239-4439-8796-40e586b7880e",sid:"49591",cid:"40361"},{name:"Geyikli",city_id:"54e48a07-1273-4e32-ac31-61ff181d2344",station_id:"61c8c8a3-9848-4f13-9e83-2c9d2ff32876",sid:"49621",cid:"41001"},{name:"Nazilli",city_id:"d1365e3d-581a-4362-b814-70597030559c",station_id:"62ce887f-fe18-4900-b7a6-26a9baca8e74",sid:"48371",cid:"42642"},{name:"Ürkmez",city_id:"36928f67-0ec1-4999-b702-70d640eda38f",station_id:"63fb4496-9380-4705-aa4e-d9b3b5f4be88",sid:"49141",cid:"40571"},{name:"Polatlı",city_id:"adf97c7c-e237-42bc-bcef-46fd1ef4e064",station_id:"64cd7307-6413-49f5-9ae1-b1c1adfd8eaf",sid:"48411",cid:"42682"},{name:"Ortaköy",city_id:"496cfa32-efea-4d98-968b-70add36b302a",station_id:"65036874-c522-4038-a732-ca353807af19",sid:"52801",cid:"45301"},{name:"Güvercinlik",city_id:"c27423ed-ab6c-4039-aecf-5962daa9262e",station_id:"6524efc5-85c7-413c-951e-2cdda2d17f93",sid:"49741",cid:"42841"},{name:"Gürün",city_id:"07e1f86a-e998-4865-b3fb-cdc9011101d5",station_id:"65d8a2c6-214a-4b31-b65b-67fcc4a563b4",sid:"49731",cid:"41071"},{name:"Marmaris",city_id:"0180ce0d-db2a-4ab5-a438-e5ed7ae93d36",station_id:"66615e19-06cb-4c6f-93df-c3bf05b40e6a",sid:"48321",cid:"42592"},{name:"Trabzon",city_id:"cf581054-b5d0-4a47-9eb4-2df6eedbfb3e",station_id:"67178b67-4a67-4e45-8ace-f5243ec66d37",sid:"47562",cid:"42472"},{name:"Trabzon Moloz",city_id:"ec2dd22c-0090-4794-b33a-500886649c13",station_id:"13540793-a161-4f47-a9ab-b09ffef255dc",sid:"52751",cid:"0"},{name:"Trabzon Araklı",city_id:"c0a502fc-a68e-42be-b9b5-a2ef9584159c",station_id:"3af868a3-4b7b-46aa-9358-af69915fec27",sid:"50411",cid:"40411"},{name:"Trabzon Maçka",city_id:"4d39381f-6584-4de2-b55e-96c3d191b85e",station_id:"ce805109-eb59-47fd-8247-008302a1e759",sid:"52741",cid:"45101"},{name:"Trabzon Sürmene",city_id:"6663748e-58b1-4402-a5b4-b7d305fa9a48",station_id:"f24c7bad-3f6c-495b-96a1-b16f92fe0aa1",sid:"49511",cid:"41481"},{name:"Kovancılar",city_id:"dedb6d0b-8358-4f5f-b724-191590ef4112",station_id:"68add238-a491-45db-8b77-e5ec2df4f127",sid:"49911",cid:"41231"},{name:"Espiye",city_id:"457c1f46-722c-48c4-ad20-82b5d19fa8cf",station_id:"68d19153-275e-49b8-94cc-c17f9e97e6d0",sid:"49241",cid:"40941"},{name:"Güroymak",city_id:"b890939b-484c-45c1-a5b1-71847ae46eed",station_id:"68d8ac6b-eaa6-4010-b495-5cc64a535206",sid:"49721",cid:"41061"},{name:"Geyikli İskele",city_id:"54e48a07-1273-4e32-ac31-61ff181d2344",station_id:"694dc621-4936-4ad2-999b-1ef690ce228f",sid:"49641",cid:"0"},{name:"Kayaş Çalışkan",city_id:"d0e1a8d1-c0c2-4cca-b54b-f59d6256e864",station_id:"6a2bb174-e750-42ac-a5de-2de0fc1354ce",sid:"49881",cid:"41201"},{name:"Kırşehir",city_id:"4c23b117-e848-4de0-9d19-6b8d7f3a2db2",station_id:"6b9fc3ab-8950-4b0c-b5e1-f0ecb57de063",sid:"47931",cid:"42252"},{name:"Kırıkkale",city_id:"faf99f4a-633f-48d8-b383-1c30650d6633",station_id:"6c318e96-3a16-421e-9697-8ea3f8fa8152",sid:"48171",cid:"42242"},{name:"Ceyhan",city_id:"4b0d6fac-d997-462c-942d-ae7f4076cb4c",station_id:"6c3333cb-2f17-48ef-bfef-2232586485d5",sid:"48731",cid:"41742"},{name:"Osmancık",city_id:"c3cf3837-1403-46eb-bff5-09e88b1b1cbe",station_id:"6cb9ecfd-37b9-4bcb-8123-44d6c657ed09",sid:"49321",cid:"41321"},{name:"Sarıgöl",city_id:"06e334cd-f298-4de8-93d1-ca8e93ca5bb5",station_id:"6d3cbf18-ed2f-45cc-a5d4-f37cd43e395d",sid:"52671",cid:"45261"},{name:"Aksaray",city_id:"ab420b8c-a79a-4b57-a5e1-98f5e0024a66",station_id:"6dd8a02e-a3e0-46e2-8d82-fc7f64175ad3",sid:"48791",cid:"40231"},{name:"Kayseri",city_id:"a67558b0-8638-4fae-86c3-348abb915791",station_id:"6ee0247e-cffd-4da6-8d16-d21c87394b7e",sid:"48161",cid:"42212"},{name:"Dikili",city_id:"7c382fbd-89df-49ad-9fb3-d281bd9f937f",station_id:"6f086719-343b-48a6-ab72-0f8cf13127b2",sid:"50151",cid:"40831"},{name:"Gerze",city_id:"2466f236-5545-425e-8e34-97e148fb037c",station_id:"724b035d-e4a4-4b2d-93a6-0b0a69e5c98f",sid:"49581",cid:"40981"},{name:"Bergama",city_id:"fd0b17f1-86a7-4e89-889b-1b2080139c89",station_id:"7258e0c4-78c1-4925-9d07-89e6f821aea2",sid:"51951",cid:"43501"},{name:"Turgutlu",city_id:"8ad0d78d-7bde-476a-a741-dfae4eb8a3d5",station_id:"72a8ca83-cb42-4678-888a-71988615bf11",sid:"48521",cid:"42532"},{name:"Bitlis",city_id:"1f7cee66-7d94-419d-a680-0b3bd3f89af0",station_id:"72d08386-65e4-4464-b895-4b1847240b06",sid:"48891",cid:"41612"},{name:"Ortaca",city_id:"f6eeb5e2-af5a-49a6-a86e-b3159eb1904d",station_id:"72d2b0f8-c0e6-4ed2-998c-702177b63c56",sid:"48391",cid:"42662"},{name:"Ürgüp",city_id:"bc39e521-fa0e-411b-910e-56dd82033728",station_id:"73117a28-080b-4f58-9ea8-186d2cda3d5c",sid:"49131",cid:"40581"},{name:"Bayburt",city_id:"710ce093-7696-49f8-b2ef-f3f181427f72",station_id:"73135967-bb58-4f1d-b620-dd9dab6035f1",sid:"52231",cid:"43591"},{name:"Boyabat",city_id:"2703ebfe-e333-4338-beb3-0b76724b1c41",station_id:"73193571-9c07-44ab-9c5e-68b5fa9e8861",sid:"49981",cid:"40691"},{name:"Umurlu",city_id:"60cde103-03bd-472b-8341-4093f213cf0e",station_id:"741de1fe-338b-44ff-8f7f-817b908b3417",sid:"52071",cid:"44981"},{name:"Van",city_id:"11264c55-d7f4-46ba-9e4a-d5e31859a9cb",station_id:"7430e39e-4d43-4f8d-8bc4-d2aa2b516fec",sid:"47552",cid:"42492"},{name:"Niksar",city_id:"cb0c41bd-ebe8-4695-a40c-66896eeb961f",station_id:"74b51368-a436-4771-a3c2-dbe40f0d952b",sid:"52581",cid:"45311"},{name:"Rize",city_id:"6ae942ba-23b8-4092-bdb2-bdb978989890",station_id:"75bb6163-5a97-4461-958a-82858c53dfd2",sid:"47622",cid:"42392"},{name:"Tekkeköy",city_id:"74b16a04-8cd3-4a32-9032-e9f1190f03b7",station_id:"780ce3b7-642d-4f3f-8bdf-e3c7d3978105",sid:"48501",cid:"42772"},{name:"Oğulpaşa",city_id:"2b849b57-8838-4c31-9669-919b918b14a7",station_id:"78a314a2-3300-4e01-ad69-d442cd0a28c0",sid:"56831",cid:"47321"},{name:"Avanos",city_id:"dc5153da-b35f-47b5-b12c-e9ae465f80ad",station_id:"78f5ae1d-f5d0-48cf-811e-c515fed5b11c",sid:"49941",cid:"40441"},{name:"Aliağa",city_id:"0d4f7486-b5de-43d6-a94d-f000cd0590af",station_id:"793a32c8-c2cd-473e-b2d6-bf1ac76b54bb",sid:"47811",cid:"40311"},{name:"Patnos",city_id:"899f77ea-8ba7-4a53-a0d8-d86f713c52fe",station_id:"7a2af593-87fc-4974-ac5f-9bedb7cfec55",sid:"48401",cid:"42672"},{name:"Banaz",city_id:"f623f54f-800f-4696-9ab3-eee7b81d20fb",station_id:"7b6c907f-7fc0-4bea-9873-2ac28aad1178",sid:"52041",cid:"40651"},{name:"Fethiye",city_id:"070fc48f-e5c9-4715-8fe8-2aa6eb885ced",station_id:"7b839ef8-35dc-4020-b63e-5350263c954f",sid:"48631",cid:"41962"},{name:"Darende",city_id:"d0ac8182-05ee-4636-acdc-3ab6f59bcfa4",station_id:"7ba65f5f-3829-456b-a352-988ed750cb46",sid:"50131",cid:"40821"},{name:"Boyalıca",city_id:"9c81c82b-b165-494e-bd84-6182f714c680",station_id:"7cfc3b93-e339-4c9d-80f6-12895fe8c04d",sid:"56821",cid:"47251"},{name:"Orhangazi",city_id:"326c5b19-bfae-4395-8545-51c2d2a644a1",station_id:"7e3ba7a2-70e5-4a66-8e29-7f0dad118226",sid:"48381",cid:"42652"},{name:"Cacabey",city_id:"4c23b117-e848-4de0-9d19-6b8d7f3a2db2",station_id:"7f0c55c3-bb39-4125-bae6-f763ee914ae6",sid:"54101",cid:"0"},{name:"Çan",city_id:"c74099b4-4c25-401b-9357-3baa50b63db1",station_id:"8000db34-c660-4930-81bf-9657d1fdd449",sid:"50001",cid:"40711"},{name:"Konya",city_id:"c4a56530-f758-4575-ab23-66ecce5623e1",station_id:"8040433b-9038-40de-9f8f-526ad6ef4d94",sid:"47901",cid:"42272"},{name:"Tefenni",city_id:"a777442e-8b4b-456a-be09-6b1489ed1e79",station_id:"82962cd3-ecd7-410f-995b-136e045dbe20",sid:"49661",cid:"40631"},{name:"Perşembe",city_id:"74719f9d-ae90-4327-aff1-e004e73c1963",station_id:"83121098-30e4-4b1c-943c-efc7931175d5",sid:"49351",cid:"41341"},{name:"Çay",city_id:"231d4805-16a5-4f37-bd7e-09dc2c04f6e7",station_id:"83187ae4-ac35-419d-b1b6-1d1a3ed313af",sid:"50041",cid:"40751"},{name:"Niğde",city_id:"681b324c-8df3-471c-b462-44e4821605c7",station_id:"859150b1-16b1-4982-9e6f-08c8dbbbf451",sid:"47651",cid:"42362"},{name:"Silivri",city_id:"ca8e6c6f-cba3-4c1b-940a-270d9ce725ed",station_id:"86c42da8-dab9-442e-9fcb-ac44f95b8ec2",sid:"54811",cid:"0"},{name:"Tirebolu",city_id:"058e4dd3-4f09-44f6-afa2-c8b26004a05a",station_id:"88efe233-f5f0-449e-aa4f-2d5bb93f6124",sid:"49671",cid:"40611"},{name:"Yeniçağa",city_id:"08594d92-58c1-4a91-96dd-74494ae431e6",station_id:"896388f0-3872-43a1-a85e-1a115f47ca25",sid:"49051",cid:"40531"},{name:"Kırıkhan",city_id:"8deef41d-1f99-429a-90bb-89c10ccb6764",station_id:"8a26653f-aed0-4989-b6ad-99bbce649b5f",sid:"48251",cid:"0"},{name:"Bor",city_id:"3ef992b0-7e6a-4e0d-9aa6-453f28a2cb42",station_id:"8a7b8430-1c24-4713-8529-9de8c9fc93a7",sid:"48051",cid:"0"},{name:"Alanya Mahmutlar",city_id:"af652ced-0830-436b-985d-c0c4d48ad6be",station_id:"8b033fa0-07d5-4de1-9610-42449a2f3280",sid:"51981",cid:"40281"},{name:"Çayeli",city_id:"40564481-ba4c-4b40-a621-a8643fcf4c1f",station_id:"8c6cdc29-a6c5-4e42-a8e1-bc5d19d9bff7",sid:"50051",cid:"40761"},{name:"Ezine",city_id:"ef59f160-f968-4f8d-8740-a3077a4a799c",station_id:"8c754cea-9245-4bf9-835c-6099ccf616d4",sid:"49521",cid:"40951"},{name:"Kadirli",city_id:"92028532-86d8-4252-8493-e08e24d31be3",station_id:"8d92744c-38ef-4dc9-849f-e8befe34e3b9",sid:"49021",cid:"42142"},{name:"Alaplı",city_id:"a05b440f-c48d-4868-8d09-2c1a4a32fcbb",station_id:"8e1f6317-dd11-46ec-94f4-eb1a9eae8500",sid:"49461",cid:"40291"},{name:"Seferihisar",city_id:"fe8e393b-c78a-4fb0-8805-e65ffc054c41",station_id:"8e961184-14a5-4689-9b1c-6fb8ac36e881",sid:"49421",cid:"41421"},{name:"Manavgat",city_id:"f0b5b7f4-9317-4c39-b9ae-0b0e58634617",station_id:"8ebd9194-8267-4f99-be80-2b1484903b71",sid:"47711",cid:"42312"},{name:"Refahiye",city_id:"4bae37e5-3041-4415-b422-448b4853b028",station_id:"8eea5d40-fe27-49b6-914f-d6dd948ce021",sid:"52641",cid:"44791"},{name:"Tutak",city_id:"1b5b2b00-584b-4cf1-96c8-9c7025b74a97",station_id:"8ef8e64e-1e2d-4e0a-b361-be13dab907bc",sid:"52761",cid:"45041"},{name:"Gümüşhane",city_id:"468b038e-9826-4d79-96d4-d83c38b7f043",station_id:"90f0e949-95f2-441e-9e5c-4f7420bff7ac",sid:"48581",cid:"42052"},{name:"Alaca",city_id:"173eb336-4649-4e88-9b52-9edf44515abc",station_id:"949279ba-2a50-44d6-9dd2-e7351be550d7",sid:"49441",cid:"40261"},{name:"Yozgat",city_id:"4e39dc19-ef95-482a-993c-66cfea97bbb1",station_id:"9574b4f0-1518-4f8f-9c1b-e1b225e73109",sid:"47542",cid:"42512"},{name:"Bolvadin",city_id:"ab3d9130-34bb-42fb-8bf7-9e46a2e606d0",station_id:"98cea905-a81e-4d16-9c26-abfe3d17f1b0",sid:"49971",cid:"40681"},{name:"Arhavi",city_id:"9789f786-3574-435b-a230-3dfc879d8596",station_id:"99ef6981-ff5c-4ab5-afe8-d19e3a9e5b2a",sid:"47831",cid:"41502"},{name:"Hatay",city_id:"09d939c2-ca0a-4128-ba8e-921a96dfda54",station_id:"9b493ad1-85e7-4806-b71d-183234eeb5ba",sid:"47951",cid:"42062"},{name:"Gebze",city_id:"da0ee17d-c7f5-4915-9d67-ff6418fc79bd",station_id:"9b6a83cc-3ecb-11ea-8017-02437075395e",sid:"47921",cid:"41992"},{name:"Yalova",city_id:"c56d9bfb-29a2-4793-80a7-52ad29fb082e",station_id:"9b6a83e9-3ecb-11ea-8017-02437075395e",sid:"47512",cid:"42502"},{name:"Balıkesir",city_id:"f53c7462-1a9d-49a3-9b9a-48a4fd370306",station_id:"9b6a8437-3ecb-11ea-8017-02437075395e",sid:"48861",cid:"41542"},{name:"Sakarya",city_id:"41849384-7d6a-4b42-953f-df9fd482b312",station_id:"9b6a8886-3ecb-11ea-8017-02437075395e",sid:"47532",cid:"42402"},{name:"Düzce",city_id:"96ae33b0-4c69-4b7a-bed5-ddb3b2783880",station_id:"9b6a88a2-3ecb-11ea-8017-02437075395e",sid:"48981",cid:"41832"},{name:"Bolu",city_id:"8bee576d-d446-48be-8753-16ce7fef1119",station_id:"9b6a88bd-3ecb-11ea-8017-02437075395e",sid:"48901",cid:"41632"},{name:"Finike",city_id:"b57b6c29-cc84-4a9c-a539-afaec33241c1",station_id:"9b6c058c-3ecb-11ea-8017-02437075395e",sid:"49541",cid:"40961"},{name:"Kumluca",city_id:"0fb74a4d-9ec0-425b-8866-d3defbc8d8b5",station_id:"9b6c05aa-3ecb-11ea-8017-02437075395e",sid:"48291",cid:"42562"},{name:"Kemer",city_id:"de49c030-d688-4cf2-b9ea-e50454666d42",station_id:"9b6c05c5-3ecb-11ea-8017-02437075395e",sid:"49901",cid:"41221"},{name:"Burdur",city_id:"d4667c7d-1e68-4e09-a2c8-764234fafdf4",station_id:"9b6c0668-3ecb-11ea-8017-02437075395e",sid:"48911",cid:"41682"},{name:"Sandıklı",city_id:"bdac5449-a6e2-47b0-af74-b9020a3939de",station_id:"9b6c0683-3ecb-11ea-8017-02437075395e",sid:"48441",cid:"42712"},{name:"Bilecik",city_id:"cdb2a121-cd2e-4b0a-8f99-7226a5e275be",station_id:"9b6c0707-3ecb-11ea-8017-02437075395e",sid:"48871",cid:"41592"},{name:"Isparta",city_id:"1f2732a0-ae11-454b-a634-fca423e7d11d",station_id:"9b6c0723-3ecb-11ea-8017-02437075395e",sid:"47981",cid:"42112"},{name:"Serik",city_id:"c2a6ae07-d8d2-45a0-8c0f-b3cd28879fba",station_id:"9b6c07bf-3ecb-11ea-8017-02437075395e",sid:"48451",cid:"42722"},{name:"Alanya",city_id:"af652ced-0830-436b-985d-c0c4d48ad6be",station_id:"9b6c07db-3ecb-11ea-8017-02437075395e",sid:"48801",cid:"40281"},{name:"Gazipaşa",city_id:"f249b707-94bd-403b-8d3a-b3c90a303f17",station_id:"9b6c0871-3ecb-11ea-8017-02437075395e",sid:"48621",cid:"41982"},{name:"İnegol",city_id:"c297649b-eaae-4f7c-a1f2-eb4584c4318e",station_id:"9b6c088e-3ecb-11ea-8017-02437075395e",sid:"47961",cid:"42082"},{name:"Keçiborlu",city_id:"e0bf16fd-93b2-4922-bbfc-c5d4f9a05012",station_id:"9b6c08d6-3ecb-11ea-8017-02437075395e",sid:"49891",cid:"41211"},{name:"Tekirdağ",city_id:"2a7f2d2c-5424-479b-bf1a-896721eb3495",station_id:"9b6c1e74-3ecb-11ea-8017-02437075395e",sid:"50501",cid:"42881"},{name:"Keşan",city_id:"3a04a06c-ca28-4492-b133-2f395c16bc7e",station_id:"9b6c1eca-3ecb-11ea-8017-02437075395e",sid:"48241",cid:"42222"},{name:"Çorlu",city_id:"c153ddd7-8d83-4d81-91c7-463fc8ee87c2",station_id:"9b6c1ffa-3ecb-11ea-8017-02437075395e",sid:"54891",cid:"45921"},{name:"Çerkezköy",city_id:"6e931cd6-a104-4637-9516-29297533625c",station_id:"9b6c20d0-3ecb-11ea-8017-02437075395e",sid:"54181",cid:"44441"},{name:"Saray",city_id:"5ae1cc9c-df6a-4481-8cc9-4d4d2abd92ab",station_id:"9b6c20ed-3ecb-11ea-8017-02437075395e",sid:"54171",cid:"44451"},{name:"Vize",city_id:"05be0997-947a-4f2d-bcd3-1c003aa5b5ca",station_id:"9b6c2122-3ecb-11ea-8017-02437075395e",sid:"54191",cid:"44461"},{name:"Ordu",city_id:"bb800fec-91ea-4519-bf63-3136734f43fe",station_id:"9bdf3143-b62d-4e07-aa38-365389247035",sid:"47641",cid:"42372"},{name:"İzmir Otogar Tesis",city_id:"e76a49b0-c196-4c4e-92ce-9f63f14adc16",station_id:"9cb1f6a7-68cc-42c8-9634-a237de5915d6",sid:"53121",cid:"42122"},{name:"Bafra",city_id:"d098f2d1-38c0-433d-995d-ca1e10f4862e",station_id:"9daa8492-05a8-4eb4-b8ea-22461435d77c",sid:"47871",cid:"41532"},{name:"Kuşadası",city_id:"3128b48b-9b5f-4dad-b8f5-4c3f40dca35b",station_id:"9e0aafda-4b74-40e4-bf51-504a1a01c7bd",sid:"48301",cid:"42572"},{name:"Adana",city_id:"7f2e45cb-f06d-4609-86fd-50126ce5ce1f",station_id:"9e6fd7c2-36a8-4e8b-bab1-7b03e390f71e",sid:"48761",cid:"40141"},{name:"Ereğli Konya",city_id:"03758da8-a5ef-4dac-9a74-0967f8a9c883",station_id:"a562a070-99dc-4ddd-a45b-cf396529740b",sid:"48651",cid:"41912"},{name:"Mudanya",city_id:"cafcd1f0-36c2-4e89-a593-5387875475e2",station_id:"a95ea700-c786-43d2-8163-2c0f88cbb637",sid:"48361",cid:"42632"},{name:"Bodrum",city_id:"7478b763-f820-4acf-90fd-0393992a9957",station_id:"aa251f12-7ffc-4a96-901a-cf21cbfd80c8",sid:"48031",cid:"41622"},{name:"Aşkale",city_id:"bdcda5da-517f-4562-8e24-13da5a382464",station_id:"aa642ec3-1276-4071-9990-cb57adb9f0c8",sid:"49931",cid:"40431"},{name:"Gölhisar",city_id:"59962784-af2e-4c12-a66b-b0e56e429e96",station_id:"aae14b32-0fe2-4c2f-a009-1d3dee2717f6",sid:"52391",cid:"0"},{name:"Tatvan",city_id:"b5d50236-80d0-473e-a0a4-d06381388395",station_id:"ac114046-9edb-4be9-a33f-b0019a864f8b",sid:"48481",cid:"42752"},{name:"Hacıbektaş",city_id:"b9c2bf44-8e06-41c8-8e66-f19a499d2590",station_id:"ac55ba9f-1492-4835-9a73-5e60feb664d4",sid:"49751",cid:"41081"},{name:"Malatya",city_id:"a1e9ac81-71bf-4149-bcec-d698425a9e02",station_id:"acfe22ec-f0b3-41e7-899c-bcd87c050366",sid:"47731",cid:"42302"},{name:"Hisarcık",city_id:"e6132b45-1149-45b2-93aa-38156854c30c",station_id:"ae8e7b30-1aaf-4b68-a25c-4487d476e28a",sid:"52031",cid:"45001"},{name:"Emirdağ",city_id:"e0be4158-025e-4c2c-b7a3-de55c566d620",station_id:"afc5f246-b26a-434a-b618-b3b6c7aa907e",sid:"49251",cid:"40901"},{name:"Erciş",city_id:"964a60c4-07d4-4736-81a1-4796fe828532",station_id:"b071436d-01f1-4495-96c8-099e75302cbe",sid:"48181",cid:"41882"},{name:"Buldan",city_id:"717dc869-2961-42ac-9432-86fa27485089",station_id:"b09ec9a9-379a-4e1c-9809-aced6c451554",sid:"49991",cid:"40701"},{name:"Gevaş",city_id:"ef2668eb-4e95-4b0a-8c22-17b8f935363c",station_id:"b0d134b2-e813-45e1-b2d9-e31b436d20e3",sid:"49601",cid:"40991"},{name:"Beyşehir",city_id:"c96dad5f-5543-4ae9-a51e-f8bd084aade3",station_id:"b212ac9f-9823-4442-9089-896e1175f0d0",sid:"48131",cid:"41572"},{name:"Altınoluk",city_id:"c8162c13-e3a0-4fbc-8fb5-e7eac42504d4",station_id:"b249de41-601d-4c61-a301-885ccd295cf2",sid:"49551",cid:"40331"},{name:"Safranbolu",city_id:"422353b1-c59f-46d8-a11d-c0967e1c7ee6",station_id:"b311da4f-0034-49ee-af0f-65cdccbffff4",sid:"48421",cid:"42692"},{name:"Araç",city_id:"10f7795c-26ee-4240-b877-1437d69734c0",station_id:"b38288a2-ea6d-41f2-ba8b-cbc6b75b863c",sid:"49831",cid:"40401"},{name:"Ağrı",city_id:"fafb94c9-e0a2-4077-bc9d-3db8b2f30f53",station_id:"b3e9ec82-603c-4e95-8e54-617a17461549",sid:"48781",cid:"40171"},{name:"Gökova",city_id:"9b74bf3e-33fc-495b-a5da-f738547f4b30",station_id:"b5df4bda-0723-4a0e-8171-81f274a4ebd6",sid:"52381",cid:"44871"},{name:"Fatsa",city_id:"e99408a0-a4fe-46d4-a9a4-21b84b37eadd",station_id:"b6398ff4-f48f-4d65-81b7-72715da614ca",sid:"48641",cid:"41952"},{name:"Akdağmadeni",city_id:"a2613723-38b6-4d18-9668-bf7a3c5707a1",station_id:"b75de081-aaf7-4501-980c-49a3a7a1857b",sid:"49081",cid:"40211"},{name:"Datça",city_id:"c0e871e2-f88c-4b58-9e4a-0788f32f32ac",station_id:"b903fa80-ed53-4700-b161-a37d59b8e053",sid:"50141",cid:"40851"},{name:"Burhaniye",city_id:"cc2fdb26-91fb-4c5a-b0d2-bb145e2ab266",station_id:"b928b1d7-d037-45e6-99cb-4dd6d068224e",sid:"48101",cid:"41692"},{name:"Keşap",city_id:"6d8891ea-56aa-4aa8-a333-a14500596568",station_id:"b9c37643-855d-499f-90ae-07c8f306e3e3",sid:"52521",cid:"45171"},{name:"İmamoğlu",city_id:"e9bbe2a2-436a-4123-bde1-084fdf9cda71",station_id:"ba1a15fd-0f92-4ed6-a6e0-5ab3e375cb4b",sid:"49761",cid:"41121"},{name:"Terme",city_id:"078ae7fc-7924-430b-8266-7fef644123f0",station_id:"ba772e1d-2ff4-4b3e-a620-0b8831570d08",sid:"48511",cid:"42782"},{name:"Yatağan",city_id:"8e8de570-a300-4823-8f94-8f5663ffbd4b",station_id:"bb1ab822-5566-4790-92da-061fb50b8b6a",sid:"49161",cid:"40541"},{name:"Artur",city_id:"82433293-aa50-42a6-bae9-c7d5d219dc0c",station_id:"bc656b10-d336-4869-b2d8-da8a8a74844b",sid:"49851",cid:"0"},{name:"Derepazarı",city_id:"de55eb1a-a73a-47a7-bb96-40fd64b917b8",station_id:"bd985961-26dd-4cdb-95a3-3eff863e9e89",sid:"54081",cid:"44391"},{name:"Salihleraltı",city_id:"0a984d46-fed1-40fe-81af-9235b5fb2800",station_id:"be285067-cc65-4d33-9542-695d0c374ed8",sid:"49361",cid:"41361"},{name:"Alaşehir",city_id:"d2ca8228-bf53-4ad0-aea7-258062832f50",station_id:"bee81a69-f820-4b0a-88c4-36094dcbe955",sid:"47801",cid:"40301"},{name:"Çavdır",city_id:"ecde0fb4-53be-498e-addd-895562696f76",station_id:"bf4e35e7-21d3-44c9-b145-88e11badeaa5",sid:"50031",cid:"40741"},{name:"Ulus",city_id:"de121374-2e80-4ea7-8145-1fb28872deb9",station_id:"c047ce68-d38e-4be5-a142-df8409566292",sid:"56721",cid:"47151"},{name:"Eğirdir",city_id:"461d6130-084d-4635-952f-be2e4c8ef261",station_id:"c146f473-0acd-4e35-8304-6591f678e504",sid:"50171",cid:"40861"},{name:"Çaycuma",city_id:"c85b71a5-587a-44f9-a09e-2b67e974eed1",station_id:"c16b44b2-1d12-4610-863e-61af29df479f",sid:"48741",cid:"41732"},{name:"Devrek",city_id:"7d8d5a76-692e-4ca4-b638-23ca9a24ce9a",station_id:"c3894434-562b-4d9e-9f61-f48944ec3586",sid:"48701",cid:"41802"},{name:"Piraziz",city_id:"39beff0e-ddb9-4128-bb46-bb87b3838aa3",station_id:"c498c3ab-d48f-485f-a522-ee9b0b544f2a",sid:"52831",cid:"44651"},{name:"Elmadağ",city_id:"f64badcd-e304-47da-bfe9-9b52e9b905d2",station_id:"c551178c-e22c-41b6-8b5d-8f4fa13cb2a3",sid:"49101",cid:"40881"},{name:"Yıldızeli",city_id:"7d4c3224-1054-49cb-8bcf-c1c2bb8f3597",station_id:"c703aecf-00b5-4146-b208-eb81e4e7cc23",sid:"49181",cid:"40511"},{name:"Milas",city_id:"ceffb11c-0205-4b63-a82a-6d7bee878c51",station_id:"c749594f-cb44-4350-bc24-9224993fa74a",sid:"48351",cid:"42622"},{name:"Kozlu",city_id:"31ff8689-fbfe-42fe-a695-46ffad8ed67c",station_id:"c7c8446f-6491-4333-94f3-df054ed1811c",sid:"49221",cid:"42831"},{name:"Manisa",city_id:"4c6f653e-a8a7-4342-8728-fbf923f694b9",station_id:"c9e20f80-4886-4915-bc13-d5146f911515",sid:"47701",cid:"42322"},{name:"Akşehir",city_id:"8b6f70ac-8b53-4faa-9daf-4cba62c063b3",station_id:"cb25e893-8e02-4a5b-b3bc-34de26350df0",sid:"47791",cid:"40241"},{name:"Çeşme",city_id:"48fdbe01-af5f-4566-9b24-281c1ea86d41",station_id:"cb590af7-6a5b-4d4b-894f-f6c153e42201",sid:"50061",cid:"40771"},{name:"İmranlı",city_id:"abf2b685-e682-4866-873b-d908843e191c",station_id:"cb905896-dfa3-410e-a782-e14973bfc61e",sid:"49791",cid:"41131"},{name:"Çandarlı",city_id:"bc87117c-b1e3-4be7-af3e-951596815e50",station_id:"cbf28e14-92d4-4755-adef-a00ce68dbefd",sid:"50011",cid:"40721"},{name:"Şarkikaraağaç",city_id:"cd27cb74-1eb3-46cd-8e1b-73296c9cbb46",station_id:"cc3d6cfa-da79-49fc-b759-9280bb953ba4",sid:"49401",cid:"41401"},{name:"Gülşehir",city_id:"0e2bede6-c942-462d-b8ec-6986a7d4556e",station_id:"cd6309bd-cd28-4e2e-98ff-62026e7e1a4f",sid:"49711",cid:"41031"},{name:"Biga",city_id:"e3143814-a9be-421e-bf04-4692d3d12b8a",station_id:"cdc497bc-9493-4fad-a247-9e705f038dbd",sid:"48141",cid:"41582"},{name:"Erbaa",city_id:"d8b2e5f0-02e4-4a5b-9587-79b88570ac8e",station_id:"ceb1bd16-887b-4612-8892-d6b72c9ff0f0",sid:"48191",cid:"41872"},{name:"Akhisar",city_id:"b44993b2-26b7-4f78-b232-5bd1f569d32f",station_id:"cf10bf25-263f-4d22-8967-af9fd0954879",sid:"47761",cid:"40221"},{name:"Kırıkhan Topboğazı",city_id:"8deef41d-1f99-429a-90bb-89c10ccb6764",station_id:"cff2c517-5680-40ef-98f3-8be37ea5de7c",sid:"51421",cid:"42232"},{name:"Fındıklı",city_id:"29938c16-8a46-4119-be49-67044acbeb39",station_id:"d0229e8d-0c83-44cf-8ec9-0f218d3ff6d9",sid:"54111",cid:"44401"},{name:"Görele",city_id:"91fcef95-15f8-4c74-94ca-0e9e1eb503b1",station_id:"d14d7f44-e506-45af-ad74-16d73a766589",sid:"49681",cid:"41051"},{name:"Çankırı",city_id:"6dc3455e-dad2-4192-a216-5f8b0e4621e2",station_id:"d209f48c-73a4-45fb-9bcb-30d342ff3339",sid:"52321",cid:"42891"},{name:"Akçakoca",city_id:"29af88ac-e98e-4244-9820-737957c1fc0f",station_id:"d39cb032-a35a-4e17-99ad-db46738ef948",sid:"49061",cid:"40191"},{name:"Elazığ",city_id:"3235154f-e1e3-4979-bde7-868e42f4a8f3",station_id:"d71900fb-92b8-4a54-a44c-08dc27b2ddd4",sid:"48991",cid:"41862"},{name:"Kadınhanı",city_id:"73ff141e-3b6e-4bdc-821f-4a4d04cd9797",station_id:"daf40d32-0e0d-447d-83e0-74fb160915bb",sid:"52481",cid:"0"},{name:"Cide",city_id:"306a1f32-f1f3-4efe-b1d2-112fe97bcdf1",station_id:"db45dfd2-b57d-4cb6-9277-8692c3078cfb",sid:"50091",cid:"40781"},{name:"Gölcük",city_id:"0660df63-4d7f-4f62-9dcd-91913baf2b17",station_id:"dd06ec29-5961-4bbe-9bd8-605f4d5a05a8",sid:"48601",cid:"42022"},{name:"Göreme",city_id:"4a3a7365-7243-4c34-8a23-ce109a57d91c",station_id:"dfccdfea-a879-4b36-9ff1-aeea3629e2e4",sid:"49691",cid:"41021"},{name:"Karamürsel",city_id:"4c30f4dc-4e30-4b5b-85de-b099c7d7ab3c",station_id:"e09d1577-70e0-4f5d-ae0a-1aa0473d0349",sid:"50651",cid:"43051"},{name:"Karabuk",city_id:"1fc73e46-46fd-4691-a25b-0f09c7536f51",station_id:"e0cfbf0a-1ab0-4405-966c-22f4d54a111c",sid:"48071",cid:"42162"},{name:"Gaziantep",city_id:"ab879de5-f14e-46cf-9623-1b2861b95c46",station_id:"e0e4b35b-f0fb-4252-9f68-5d980cd31c16",sid:"47851",cid:"0"},{name:"Of",city_id:"1c4da011-db71-4383-99d3-545d1f2c2e2b",station_id:"e0f187f5-4a7f-4964-b62d-37d37ce2dcf9",sid:"49311",cid:"41311"},{name:"Kaş",city_id:"0e5feb3c-8306-4fec-98aa-dcc7a6399bea",station_id:"e1762034-55df-4ee5-a9b9-69976acd6ea4",sid:"48231",cid:"42192"},{name:"Urla",city_id:"1881517d-d7b6-4b9f-8aec-f0baf9e6c90d",station_id:"e2eaca31-2358-4a01-ab9a-bf64c398efb6",sid:"48551",cid:"42792"},{name:"Acıgöl",city_id:"f366a658-7a25-4b0d-bbde-33f87d10b9be",station_id:"e3f61ae2-2068-49e8-83d5-737dd34596ad",sid:"47501",cid:"40131"},{name:"Aliağa Yeni Şakran",city_id:"0d4f7486-b5de-43d6-a94d-f000cd0590af",station_id:"e59526e5-7bf5-42e3-b73b-65966357bfa9",sid:"47821",cid:"40311"},{name:"Bulancak",city_id:"957526a2-c8e2-4d75-8fef-8e1e1289ebb5",station_id:"e7ca9c25-3c72-4231-9fbf-df8924bb7351",sid:"48091",cid:"41672"},{name:"Çerkeşli",city_id:"b4c0322a-86e8-468e-810a-138f93e3e1bf",station_id:"e7cdb2fc-4957-4ae4-bb76-bc35139767eb",sid:"56861",cid:"47261"},{name:"Kulu",city_id:"a8a48b2b-ac5d-4d7d-bbb0-23389ee88fad",station_id:"e833967c-31f6-4384-b7a8-3c24f2cf8998",sid:"48281",cid:"42552"},{name:"Giresun",city_id:"ef1290d1-8434-4bbd-b138-5cb0d2738d19",station_id:"e9422936-2580-4c00-8ee9-1e39b020dcc0",sid:"47941",cid:"42012"},{name:"Çine",city_id:"49a7f929-5be3-4ca7-bba3-d1f4fe570fc6",station_id:"e9ceb0f2-39b8-403a-8e2a-4f628545344b",sid:"50111",cid:"40801"},{name:"Mucur",city_id:"9b1d22b2-8995-475e-aed8-b3ba6f2af790",station_id:"ea424f0a-8699-4a07-bd0b-bed5c304e509",sid:"49301",cid:"41301"},{name:"Erdemli",city_id:"f3c7d756-5938-4dac-bfcf-e67444e66106",station_id:"eacce40b-f315-4888-b40f-0e103c7cac45",sid:"49091",cid:"0"},{name:"Erzincan",city_id:"5aae5352-4b85-4f07-9813-00bfc1344fca",station_id:"ece397e6-60de-48ca-899e-f73799bb41ca",sid:"49001",cid:"41922"},{name:"Turhal",city_id:"acc21019-ee26-4090-bd0a-72263db5d368",station_id:"edb8935a-add4-4010-a536-e3bdcfefdb9c",sid:"48531",cid:"42802"},{name:"Tosya",city_id:"ffdff822-6f74-408e-aa5e-5851f8fa7844",station_id:"efd122cb-6d77-4b40-8100-e457dea26ebd",sid:"49701",cid:"40601"},{name:"Gerede",city_id:"c67e4772-f9ae-4354-b4cc-1977af7a73b6",station_id:"f0a5433f-be41-4359-b21e-d66cfd1d59aa",sid:"52371",cid:"0"},{name:"Bingöl",city_id:"8726b39f-b666-4127-b168-04fd5d9bebb4",station_id:"f0d9f86f-2cd4-4ff7-8092-021e4ceccfd9",sid:"48881",cid:"41602"},{name:"Karaman",city_id:"bdcf7cc8-528b-4ef6-9cec-9cbbc6e007b1",station_id:"f190f4c7-4d9d-4f0f-aa3e-1c9f25ed5e74",sid:"48121",cid:"0"},{name:"Belek",city_id:"ad8962d8-6513-4af1-974d-19befbcb2841",station_id:"f2135c7d-e64b-4700-b702-4c085119943d",sid:"49951",cid:"40661"},{name:"Dinar",city_id:"b54c76a0-0248-40e0-ada2-d179da887455",station_id:"ff4a95b8-7710-4d5b-9a56-c61c9ca832ef",sid:"50161",cid:"40841"},{name:"Amasra Cakraz",city_id:"56dd7e22-57ed-4165-bd25-0bc6821d0b00",station_id:"fa3bd572-8df9-4d90-b7c7-437c69c49e19",sid:"52301",cid:"40361"},{name:"Bozüyük",city_id:"1af92117-bfad-4019-a1a2-835e52cdba6e",station_id:"f447906b-d47d-4819-9d4e-2e27204ae3d1",sid:"48111",cid:"41652"},{name:"Gönen",city_id:"668a03bd-17ad-4487-9636-d9c36c8625c5",station_id:"f48e9f71-ef42-4058-9ef5-bad0e81fbb6e",sid:"48591",cid:"42032"},{name:"Korkuteli",city_id:"c35dacbb-36b3-4dc5-a301-5349e0d08ba5",station_id:"f4e40978-0910-4903-8576-c2e5a04ec089",sid:"48261",cid:"42132"},{name:"Vakfıkebir",city_id:"59ba16ae-76b9-43d4-83dd-62211dae616a",station_id:"f74fbb21-50a5-42d9-bc29-413b68dfd27b",sid:"49151",cid:"40561"},{name:"Kastamonu",city_id:"1d7683fd-2fdf-46aa-bb33-414b83ad2e0c",station_id:"f7e8f803-9c01-4b65-90a6-97844864c699",sid:"48151",cid:"42202"},{name:"Karapınar",city_id:"41aa4de3-28cb-428b-ae5f-f7e506d77f38",station_id:"f87d08dc-1228-41f8-b221-7389ee4d9967",sid:"49861",cid:"41181"},{name:"Salihli",city_id:"9fdfb574-4685-45fe-81ca-7c8a3870a55e",station_id:"faa32bb9-ef6c-4ad0-9b70-75a2dbc1d4d7",sid:"48431",cid:"42702"},{name:"Dalaman",city_id:"a1ad6dde-9cd4-4106-93ce-588eabb5e632",station_id:"fb2f639d-86a6-4b1d-a327-fe7473de8b18",sid:"50121",cid:"40811"},{name:"Susurluk",city_id:"2bf2145b-ad7b-4312-9e79-74e2fd58eb97",station_id:"fb6bdb60-5ca3-4b6b-9ebe-5ed3d8c39ee4",sid:"49611",cid:"41501"},{name:"Akçaabat",city_id:"f067a6a8-c771-4d59-8f07-1f3069e6a8d2",station_id:"fb7b7d42-54e6-49e1-a2d2-7e975ecdc776",sid:"47771",cid:"40181"},{name:"Erzurum",city_id:"b2f7d7d3-57df-474d-862a-96d1b58d4b57",station_id:"fbcc425d-55f9-44e5-8e3b-728c6a4236ac",sid:"47721",cid:"41932"},{name:"Uşak",city_id:"66eceedd-1554-47e7-b61a-0092a6076004",station_id:"fcf05e08-9157-470b-add0-a8e63fe5dfb1",sid:"47572",cid:"42482"},{name:"Yenice Çanakkale",city_id:"0365a8e6-a62b-4677-8642-1966f2d2d1e4",station_id:"c0a08940-6133-42de-8038-720d60b01e28",sid:"49171",cid:"40521"},{name:"Çeşme Ilıca",city_id:"48fdbe01-af5f-4566-9b24-281c1ea86d41",station_id:"6ba366d2-42ef-41af-ae39-fb337228bb1c",sid:"50071",cid:"40771"},{name:"Çeşme Alaçatı",city_id:"48fdbe01-af5f-4566-9b24-281c1ea86d41",station_id:"3aa2d99c-8eb1-49a4-9333-3f93ba040382",sid:"50081",cid:"40771"},{name:"Kayaş Opet",city_id:"d0e1a8d1-c0c2-4cca-b54b-f59d6256e864",station_id:"634b75a6-55af-4f46-afbd-a91cf5585509",sid:"53071",cid:"41201"},{name:"Akyaka Go Petrol",city_id:"d4606ef7-e0a1-45c3-954d-d8c0b1333f9e",station_id:"58eddb71-e4b8-4221-bb58-3b3517e1a0bc",sid:"51431",cid:"40251"},{name:"İğdir Kastamonu",city_id:"4e28809b-eedb-4eb9-bf01-046b056197e2",station_id:"581524db-9b39-4a7c-98aa-655483653fe1",sid:"50521",cid:"53411"},{name:"Yenişehir Bursa",city_id:"a438007e-3895-43c4-b96c-881a7a00e54d",station_id:"3f29bdee-4607-433f-aa4e-5fb83595b9ce",sid:"48561",cid:"42822"},{name:"Bursa Kestel",city_id:"ab21812d-a350-45ee-b2c0-c4af9f3b6943",station_id:"254c93ac-b96a-4d78-81eb-10dd2625bd34",sid:"54071",cid:"41702"},{name:"Kaynarca Bursa",city_id:"8763f191-732d-42c8-b8da-f3e2bf77ff06",station_id:"60392dc3-8c92-496c-99a2-23605ed86aa4",sid:"56841",cid:"47301"},{name:"Çanakkale İskele",city_id:"4818f4e1-c4b8-43fd-b72c-2f57a38da581",station_id:"0cab5898-dc5d-4784-bd6b-280075f78c67",sid:"50491",cid:"41712"},{name:"Çiftlikköy Yalova",city_id:"c56d9bfb-29a2-4793-80a7-52ad29fb082e",station_id:"384040eb-4014-4a7c-870e-f71c0c646c62",sid:"56911",cid:"42502"},{name:"Altınova Yalova",city_id:"c56d9bfb-29a2-4793-80a7-52ad29fb082e",station_id:"07586b1f-9541-417c-aac1-1d6a0fbf1775",sid:"56941",cid:"42502"},{name:"İstanbul Avcılar",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"eae11127-50a2-4446-9c25-4e4cea3fb25f",sid:"48001",cid:"0"},{name:"İstanbul Bakırköy",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"099a3603-3351-4895-a781-b8dc903913d6",sid:"48011",cid:"0"},{name:"İstanbul Beylikdüzü",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"20f568c0-8c2a-4287-8eb3-d5f66a5fa6ce",sid:"51921",cid:"0"},{name:"İstanbul Büyükçekmece",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"56b444c5-7d7b-4dc4-a2d3-4cf0e59759bd",sid:"48941",cid:"0"},{name:"İstanbul Harem",city_id:"99c50ec5-3ecb-11ea-8017-02437075395e",station_id:"84da323d-7a78-487b-b3af-3c1cd6b01a1c",sid:"57021",cid:"40151"},{name:"Çerkezköy Kumlugeçit",city_id:"6e931cd6-a104-4637-9516-29297533625c",station_id:"8c9831fc-b006-438a-a357-0eb7c8f9a8a5",sid:"54201",cid:"0"},{name:"Yenice Karabük",city_id:"c710a5c5-0062-4515-a0cc-402beb0c650c",station_id:"fd86f2f2-3c52-4b22-8ebb-bff62e57c408",sid:"52601",cid:"0"},{name:"Erdek Feribot",city_id:"a2d57539-5ce2-405b-ac44-9be8807f9c08",station_id:"1799a58c-cee9-47d1-a7bd-3e023562418d",sid:"52351",cid:"0"},{name:"Eskihisar Feribot",city_id:"da0ee17d-c7f5-4915-9d67-ff6418fc79bd",station_id:"78727fdd-d38f-4263-93b0-fd6e9eb54fa3",sid:"52471",cid:"41992"},{name:"Karacabey Çatrak",city_id:"9ab4c7bc-769b-40be-9aee-42e44cd8fdd9",station_id:"fdacfb3b-0398-4318-bdc7-9b23856f8e71",sid:"48221",cid:"42172"},{name:"Burhaniye Karaağaç Sapak",city_id:"9ed42fde-6d06-4cc2-9af0-f468739bed68",station_id:"bd3e8d6c-c522-4220-b219-2b7906fa1fba",sid:"48081",cid:"45131"},{name:"Seyitgazi Sapak",city_id:"4151a5f0-649a-4b33-aff0-073903fffb97",station_id:"85ade937-ce03-46cd-aa2c-165c3d660d6f",sid:"51101",cid:"43341"},{name:"Gölhisar Sapak",city_id:"ecde0fb4-53be-498e-addd-895562696f76",station_id:"09c36303-e8a5-487f-9a5a-5f8760c5e0b8",sid:"52851",cid:"40741"},{name:"Gökbahçe Sapak",city_id:"4151a5f0-649a-4b33-aff0-073903fffb97",station_id:"c186cac9-9738-4b9a-aa59-febacff720d1",sid:"51061",cid:"43341"},{name:"Yenipazar Sapak",city_id:"1e82bab1-07e8-4d26-8245-0f50e351ea60",station_id:"c2396e02-e443-4f88-933b-0dc7092e96a4",sid:"51941",cid:"44931"},{name:"Kümbet Sapak",city_id:"3c61f2c9-46bc-46e8-ab13-3d817e5127f2",station_id:"a1e020db-a0dd-4259-9025-ddc1c8f5632a",sid:"51081",cid:"45381"},{name:"Bozüyük Sarar Pet Ofisi",city_id:"1af92117-bfad-4019-a1a2-835e52cdba6e",station_id:"9b6c0742-3ecb-11ea-8017-02437075395e",sid:"52251",cid:"0"},{name:"Osmancık Sapak",city_id:"c3cf3837-1403-46eb-bff5-09e88b1b1cbe",station_id:"7cab4fd0-bf37-4d72-b2de-11efd172260b",sid:"53151",cid:"41321"},{name:"Hüyük Sapak",city_id:"2e437750-a09b-40b0-8290-4a298db55a41",station_id:"832e7ec5-c729-4ff0-bfc6-245099cd3561",sid:"52161",cid:"41111"},{name:"Gazlıgöl Sapak",city_id:"bd269868-9143-4f04-a1da-c306cb917868",station_id:"2a23f922-0723-4326-8c63-a40d1c38e10c",sid:"51111",cid:"43351"},{name:"Gökçebey Sapak",city_id:"7ca3d6ef-cb5e-47bc-be60-7d33657931fe",station_id:"2c6d78f7-bf7d-441c-8007-2e586a05cee7",sid:"50401",cid:"41011"},{name:"Kırka Sapak",city_id:"4151a5f0-649a-4b33-aff0-073903fffb97",station_id:"313547cd-7d14-4235-a894-81ea76a6bcfe",sid:"51091",cid:"43341"},{name:"Toprakcuma Sapak",city_id:"06791dd2-54c4-4148-95e0-bb0568e36773",station_id:"50c9b216-df6a-44a7-bf64-822a46a8aef9",sid:"50511",cid:"42971"},{name:"Karaören Sapak",city_id:"4151a5f0-649a-4b33-aff0-073903fffb97",station_id:"5a9ea143-5f2c-44a2-8855-884aa97355d6",sid:"51071",cid:"43341"},{name:"Ilgaz Kavşak",city_id:"3a1881eb-1560-4fa1-97cf-c14b75095484",station_id:"61972a48-71fd-40d1-a96e-f0204be3e0c4",sid:"52461",cid:"44691"},{name:"Kurucaşile Merkez",city_id:"b76a0aa2-f69a-42ba-9edd-3661c57ff94e",station_id:"5c83a312-c047-4140-a28a-bc91793caa66",sid:"52541",cid:"43721"},{name:"Sultanhisar Merkez",city_id:"85d8b7e5-6eef-4a2f-acdd-295c7d750993",station_id:"5f215a5f-ceb6-4b45-8b7d-ed28157bb5ee",sid:"52091",cid:"44721"},{name:"Güllük Merkez",city_id:"ceffb11c-0205-4b63-a82a-6d7bee878c51",station_id:"5ff78ac1-0eb1-4842-9268-ee97e5c5ad83",sid:"52401",cid:"0"},{name:"Kuyucak Merkez",city_id:"71d710c3-6c5c-4c2b-ad09-f8e75153a0ed",station_id:"4b356965-8ee7-4ba4-9bea-19e38e03fe98",sid:"51971",cid:"45021"},{name:"Sivaslı Merkez",city_id:"2bc2c05d-c9ae-4953-a152-10b679785d72",station_id:"45647b97-9c39-42fc-a59d-95acf16d6a90",sid:"52721",cid:"45201"},{name:"Karamanlı Merkez",city_id:"336522e0-3262-476f-9b0b-95e8c829226e",station_id:"3d0d5f8e-1139-4396-bad9-0ea8a0efa42b",sid:"52501",cid:"0"},{name:"Ziyaret Merkez",city_id:"bbc317ae-29ee-4a4f-b93d-7e83e6a70c90",station_id:"3555503a-0485-4ea7-ac7d-02eb9b398fa6",sid:"54131",cid:"0"},{name:"Horasan Merkez",city_id:"53b92165-4805-4ca4-90dd-e82ccc29a810",station_id:"252d02c5-f916-4ea1-9765-e31ac0458262",sid:"52441",cid:"45011"},{name:"Horsonlu Merkez",city_id:"0d9f90b1-c3bd-4365-86f7-e740ef117b45",station_id:"225acd55-1431-47b7-bf52-e5eed4b7dc19",sid:"52451",cid:"45961"},{name:"Dalyan Merkez",city_id:"f6eeb5e2-af5a-49a6-a86e-b3159eb1904d",station_id:"0dc9f1c5-c851-4da4-b2eb-5700d0326715",sid:"52331",cid:"0"},{name:"Pınarbaşı Merkez",city_id:"8363e165-3537-4a68-86f5-754354f0e421",station_id:"0fe08358-02d9-4237-840e-9876f1ddeb82",sid:"52821",cid:"45281"},{name:"Kale Merkez",city_id:"14129f8a-c85b-4ceb-9cc5-c456476ca2e5",station_id:"783a696c-38ec-4c04-88fa-56087a56f442",sid:"52811",cid:"45111"},{name:"Ataeymir Merkez",city_id:"ceede66b-d3f0-4792-b4d6-70eda78bece7",station_id:"83415fa7-5db8-4e97-b190-d85c3d414ea6",sid:"52141",cid:"0"},{name:"Mercan Merkez",city_id:"5aa081c6-e4cb-46db-a6af-a88270e58704",station_id:"6e136827-9aed-484f-bc59-75fc62ff5805",sid:"52561",cid:"45351"},{name:"Buharkent Merkez",city_id:"36d3e82a-af93-453a-a6e7-0caf5a5bfec5",station_id:"71acae78-0b8e-4121-a96d-01d0898ea216",sid:"52261",cid:"44761"},{name:"Atça Merkez",city_id:"85d8b7e5-6eef-4a2f-acdd-295c7d750993",station_id:"84583a3f-afa0-424c-ae3a-d84057d48562",sid:"51931",cid:"44721"},{name:"Pınarcık Merkez",city_id:"361cb9d1-f4f0-402f-9bf4-258e53e65482",station_id:"01c90d4a-b0d2-4c2e-a866-5face507225a",sid:"52631",cid:"0"},{name:"Karakoçan Merkez",city_id:"10c4e862-600b-4661-977c-54cd9b759c07",station_id:"654e9152-60c7-4dc3-8184-83edd18144bb",sid:"52491",cid:"45911"},{name:"Yahsiler Merkez",city_id:"9e169c0f-39ea-42d1-a39f-a8d4ebb7dae5",station_id:"679769f9-4a41-43b9-8a7a-e86c7c2fd0ea",sid:"52001",cid:"0"},{name:"Torul Merkez",city_id:"a2cb606f-75ef-484f-a399-78c1ca47af0d",station_id:"e6249dee-beb8-4b1a-9a65-cdd728f33598",sid:"52731",cid:"45141"},{name:"Tercan Merkez",city_id:"0dd76ab5-4129-4207-9a20-45ed7df96257",station_id:"d8a85c30-b041-44ba-93a8-9cf269bc2f5a",sid:"52591",cid:"40621"},{name:"Dikili Merkez",city_id:"7c382fbd-89df-49ad-9fb3-d281bd9f937f",station_id:"c23ccc7a-df6c-43fd-872f-9aaa615d920a",sid:"53131",cid:"40831"},{name:"Şereflikoçhisar Merkez",city_id:"ba1075d2-2032-4d06-a93c-bf48143f9147",station_id:"e08fb1e8-c985-46cc-8737-f5881d1a8959",sid:"52691",cid:"0"},{name:"Sarıkemer Merkez",city_id:"7423e117-17ec-4003-bffd-7b0c128bab5e",station_id:"06010370-1bfe-4736-b80a-8bd3ed9b4001",sid:"52681",cid:"0"},{name:"Selimiye Merkez",city_id:"8258ac50-baf8-40ab-a556-3c0726e903ad",station_id:"cc760bea-3c7e-4969-8de7-7d4ae761e07f",sid:"52791",cid:"45241"},{name:"Pasinler Merkez",city_id:"649c523c-fbc2-4326-a25f-9c7a337cec2c",station_id:"c61058a4-3d37-4016-aef6-53df59bdd80c",sid:"52621",cid:"44811"},{name:"Havran Merkez",city_id:"8c5feda3-881a-4c7a-a018-b8139c6b10da",station_id:"bf6f4777-7776-417d-8e8c-386f7403b15a",sid:"52431",cid:"0"},{name:"Dinar Merkez",city_id:"b54c76a0-0248-40e0-ada2-d179da887455",station_id:"9e47b499-649a-48e2-b594-9603b06eea2d",sid:"53091",cid:"40841"},{name:"Serinhisar Merkez",city_id:"56ace1ea-073a-4a46-acc6-6fddf39415de",station_id:"8bdd71bd-9a4b-424e-9147-885529e7d3c6",sid:"52701",cid:"0"},{name:"İsabeyli Merkez",city_id:"061dc754-3467-4c5b-b559-f3cd70d47bc1",station_id:"8d886f4f-a4c8-4632-b1df-8f371ac0332d",sid:"52131",cid:"45951"},{name:"Köşk Merkez",city_id:"c689da90-0736-440c-9848-a2a221516eb2",station_id:"abf4bec3-a33a-4f5e-8e17-b57defae15eb",sid:"53111",cid:"45211"},{name:"Yeşilova Merkez",city_id:"b3d0bf00-6a7a-4a48-9cd2-d092acdffdee",station_id:"9bd012cc-eacc-4171-a0f9-445d2b0d0b4c",sid:"52781",cid:"0"},{name:"Pamukören Merkez",city_id:"3accd53f-6253-47ca-b573-496a0a0aa440",station_id:"a5d7a033-86e4-4716-ba14-7491aa0e8fcd",sid:"52611",cid:"45291"},{name:"Karahisar Merkez",city_id:"dc7f4621-2dc9-4fa1-ba50-47f7b8732da0",station_id:"a63a61d5-5991-412f-ab59-6eaa526e985e",sid:"52011",cid:"0"},{name:"Kızılcabölük Merkez",city_id:"dc7f4621-2dc9-4fa1-ba50-47f7b8732da0",station_id:"a01b94dc-dc5d-4c7e-81eb-ce776a0afc3d",sid:"52111",cid:"0"},{name:"Kıreli Merkez",city_id:"2e437750-a09b-40b0-8290-4a298db55a41",station_id:"a030da2c-245e-4e64-b938-5f524d963a67",sid:"52531",cid:"41111"},{name:"İyidere Merkez",city_id:"23ad19d8-a617-4ca9-a54e-9548885f43a5",station_id:"a09e0bd3-2db5-49ce-8336-3d9cf1a86a40",sid:"52881",cid:"41151"},{name:"Karacasu Merkez",city_id:"ceede66b-d3f0-4792-b4d6-70eda78bece7",station_id:"a18897dd-1504-4c2a-902d-05ea8450551b",sid:"52061",cid:"0"},{name:"Canosman Mola",city_id:"c0b96283-8b22-4007-a008-744e91190fef",station_id:"054eadd1-808d-4052-8a68-48399c2df2cd",sid:"63661",cid:""},{name:"Akbak Mola",city_id:"3a1881eb-1560-4fa1-97cf-c14b75095484",station_id:"071f420d-1cc1-4b2e-a47c-f2901d1217ba",sid:"51751",cid:"44691"},{name:"Ayvalık Truva Park Mola",city_id:"d27a91d8-b616-4704-bb88-7d2a18e47647",station_id:"0c012d2b-874e-4b11-9833-265095ce90c3",sid:"51571",cid:"41522"},{name:"Zorlu Park Mola",city_id:"d352badb-3fa2-4e80-bace-42d569b538d6",station_id:"16679ee8-7a5a-4a49-9200-6d5db8013d71",sid:"51551",cid:"44821"},{name:"Güneşpark Mola",city_id:"08594d92-58c1-4a91-96dd-74494ae431e6",station_id:"1882bc27-f3c9-4de9-9d85-69b5cb7606e5",sid:"51841",cid:"40531"},{name:"Mavikent Mola",city_id:"dc88a3d8-bc5d-4eea-b071-084d3b068c22",station_id:"1a0f7430-6671-4cd5-be54-a7558746abbc",sid:"51831",cid:"45361"},{name:"Eskişehir Otogar Mola",city_id:"c3831837-1eb1-4e93-8583-16c5e332f7d4",station_id:"21e326a8-2fb0-40f3-935a-2c5ba02f39db",sid:"51661",cid:"41942"},{name:"Mustafa Atik Mola",city_id:"1cc53dc8-a9c8-45e5-ba9f-fc53e54f47d1",station_id:"27909f25-8071-46f5-905e-05a9734e52f9",sid:"51491",cid:"0"},{name:"Tuna Tan Mola",city_id:"7be6b793-66ef-4c61-8453-5cb7a7c2dd88",station_id:"28384fb6-16f5-46cd-92a5-c2a8fafd0c1a",sid:"51741",cid:"0"},{name:"Cankaragül Mola",city_id:"2bf2145b-ad7b-4312-9e79-74e2fd58eb97",station_id:"3df71e17-f76a-4670-a30f-3989e2be2798",sid:"51861",cid:"41501"},{name:"Ender Mola",city_id:"dccaf579-887e-470c-b78c-f5604c3d48c1",station_id:"479d2d63-1b0d-4ba6-a134-853b58ac7ce4",sid:"51681",cid:"44801"},{name:"Doğruyol Mola",city_id:"3a1881eb-1560-4fa1-97cf-c14b75095484",station_id:"498ca490-bd56-429c-90ad-744abc41142d",sid:"51471",cid:"0"},{name:"Aktaş Mola",city_id:"07e1f86a-e998-4865-b3fb-cdc9011101d5",station_id:"49a7d780-63e1-40f1-be36-156f414cc4c8",sid:"51541",cid:"41071"},{name:"Kral Park Mola",city_id:"7f65f667-ddfa-4876-a0d0-ac74c5cb9eb4",station_id:"53d4066e-4bfb-4f2c-b23d-31c08d3b64c2",sid:"51601",cid:"45941"},{name:"Alışkan Mola",city_id:"abf2b685-e682-4866-873b-d908843e191c",station_id:"6335a04b-1aee-431c-828c-093983e7980d",sid:"51731",cid:"41131"},{name:"Hak Mola",city_id:"649c523c-fbc2-4326-a25f-9c7a337cec2c",station_id:"639ecc8c-538f-4e53-a09c-f92d72c8a0a9",sid:"51671",cid:"44811"},{name:"Irmak Mola",city_id:"2f0a8cc4-64d9-4bc5-99c0-d319e4016186",station_id:"63b061dd-3308-47f4-9f84-e97b1bdb7b09",sid:"51791",cid:"45071"},{name:"Yıldız Mola",city_id:"176e2248-0573-4eb7-b4f1-fea939296ec6",station_id:"72c9dc1f-2769-4016-8955-53f574f09805",sid:"52771",cid:"0"},{name:"Unova Mola",city_id:"224e2868-6b43-422e-b256-55bbcc151810",station_id:"73d0d2f2-4f57-4a6a-bf04-7e99d134c979",sid:"51821",cid:"44961"},{name:"İlhan Tan Mola",city_id:"d0741882-9fb1-4689-b750-b311acee5cce",station_id:"76320133-dc15-4d41-ad09-42114914a497",sid:"51801",cid:"45061"},{name:"Kazim Yay Mola",city_id:"2a7f2d2c-5424-479b-bf1a-896721eb3495",station_id:"7b8baefd-5eb5-4153-ada3-04bb893ff08a",sid:"51481",cid:"0"},{name:"Tuna Tan other Mola",city_id:"7be6b793-66ef-4c61-8453-5cb7a7c2dd88",station_id:"7cd77d79-7ac2-4e32-99b0-4c86b859b1ba",sid:"53101",cid:"44861"},{name:"Derindere Mola",city_id:"4f817558-0ebe-4e05-b28d-bace8f02ce1e",station_id:"7ef7348e-ed7c-4919-abc8-b427d493404f",sid:"51721",cid:"41772"},{name:"Dadaş Mola",city_id:"4bae37e5-3041-4415-b422-448b4853b028",station_id:"8175a71f-1459-403b-9676-f13cec6da6be",sid:"51581",cid:"44791"},{name:"Başkent Mola",city_id:"c0b96283-8b22-4007-a008-744e91190fef",station_id:"822e4549-27b3-439c-bc74-e01d7f427b5c",sid:"51641",cid:"44741"},{name:"Sevilpark Mola",city_id:"798931bc-e905-4aae-a645-70f67a68d339",station_id:"867df79e-fa16-4a8f-9107-0b6f573fe1f1",sid:"51521",cid:"45221"},{name:"Bolu Terminal Yemekçilik Mola",city_id:"8bee576d-d446-48be-8753-16ce7fef1119",station_id:"91138692-6ed6-4ad6-aab9-f7afb6d97757",sid:"57321",cid:""},{name:"Çalhanoğlu Mola",city_id:"948db614-cc7b-4f5d-be18-334f77fbcf76",station_id:"9aa974b4-91c3-427d-9b3f-4c6079574230",sid:"53141",cid:"44781"},{name:"Günaydın Mola",city_id:"8a9f9e48-ac91-416e-be99-0b5d5ab2aae5",station_id:"9b1a7d82-5603-4d63-9f8c-4d30bd01b590",sid:"51811",cid:"44911"},{name:"Coşkun Mola",city_id:"4e39dc19-ef95-482a-993c-66cfea97bbb1",station_id:"a1111af0-8727-466c-9e87-851513cba954",sid:"51561",cid:"42512"},{name:"Taytem Mola",city_id:"b870027c-abf6-433c-bc83-433a1d7e700e",station_id:"a5691344-e70c-41bf-bbb9-9d13558a6931",sid:"51871",cid:"45161"},{name:"Uşak Mola",city_id:"66eceedd-1554-47e7-b61a-0092a6076004",station_id:"a65593e0-ce1c-4bfa-8572-151eddca2567",sid:"53081",cid:"42482"},{name:"Değirmendere Mola",city_id:"0660df63-4d7f-4f62-9dcd-91913baf2b17",station_id:"a9d58bdd-92ba-4510-b483-c2224d57a875",sid:"53241",cid:"0"},{name:"Hüsem Mola",city_id:"5fd63bb6-04ac-43e8-82af-15261f25e678",station_id:"ac7aca0f-98b6-4c13-8511-3f63578dffc1",sid:"51631",cid:"45031"},{name:"Ömür Mola",city_id:"1af92117-bfad-4019-a1a2-835e52cdba6e",station_id:"ae554b15-aa7f-4171-bcc0-f78a90bf8214",sid:"51761",cid:"41652"},{name:"Namık Kemal Yaypet Mola",city_id:"21e7a05b-03db-436b-a3c9-082f3d9d6ecf",station_id:"b2dc3b9a-1dfb-4ef4-88af-3d58a47deffa",sid:"51691",cid:"45321"},{name:"Tuanna Mola",city_id:"c3d125b9-1258-48ca-93a7-b6933b5821f2",station_id:"b2f6ac17-0597-4a06-8333-78060f58744b",sid:"51651",cid:"45121"},{name:"Erdem Mola",city_id:"649c523c-fbc2-4326-a25f-9c7a337cec2c",station_id:"b8d6fc5f-5902-4271-ae6c-bde4a2f5e9ed",sid:"51711",cid:"44811"},{name:"Pamukova Metin Mola",city_id:"41849384-7d6a-4b42-953f-df9fd482b312",station_id:"bb5ff47c-b4a1-46d3-97d3-7d1ed0f25bfc",sid:"54901",cid:"42402"},{name:"Kolaylı Mola",city_id:"f3bd32db-c308-48c9-aaf0-3d0a5527666b",station_id:"c034f9d3-b451-4593-9a67-1e9b18d1c2e0",sid:"52551",cid:"0"},{name:"Altuğlar Mola",city_id:"ba1075d2-2032-4d06-a93c-bf48143f9147",station_id:"c2df88a5-d6e4-4c07-ae0e-b3b2565ee22d",sid:"51611",cid:"0"},{name:"Can Kapadokya Mola",city_id:"9b1d22b2-8995-475e-aed8-b3ba6f2af790",station_id:"c72f2ef9-4b96-4cda-b700-85cf0f88cd01",sid:"51771",cid:"41301"},{name:"Kirazlıbahçe Mola",city_id:"0957bcea-9cfd-4f30-8357-f31de3c1ff33",station_id:"c99b76b5-e1fa-4f10-8c9a-1a5c4120c71a",sid:"51511",cid:"0"},{name:"Suit Park Mola",city_id:"0c65ba80-a348-47e2-998e-af39693157a1",station_id:"ce05bc97-8fbf-42f8-95ad-ac3e0a6c502f",sid:"51881",cid:"45191"},{name:"Ali Bilir Mola",city_id:"c96dad5f-5543-4ae9-a51e-f8bd084aade3",station_id:"cfe01957-5856-4bf3-9221-8a6d72dd7d1a",sid:"51591",cid:"41572"},{name:"Afyon Kamil Koç Mola",city_id:"f3bd32db-c308-48c9-aaf0-3d0a5527666b",station_id:"d60af3b2-97b8-4db8-8f91-16fe1f1a654e",sid:"51701",cid:"40161"},{name:"Şahintepesi Mola",city_id:"4c23b117-e848-4de0-9d19-6b8d7f3a2db2",station_id:"d74985f1-8e58-4a0c-95fe-6fc4b36f3456",sid:"61621",cid:"42252"},{name:"Yükseller Mola",city_id:"49cf12c4-ed5f-4e72-8c77-57f27ca367f1",station_id:"e2331116-e8ab-4b23-9356-b2e9e658b240",sid:"51531",cid:"44891"},{name:"Şereflikoçhisar Başkent Park Mola",city_id:"ba1075d2-2032-4d06-a93c-bf48143f9147",station_id:"efdf730d-30da-4499-a4c4-f8fe29c6b420",sid:"52651",cid:"0"},{name:"Baktat Egemen Mola",city_id:"28fb557c-9278-443e-88d4-00582b83683d",station_id:"fb97e09c-7a73-481c-a1f5-1679bca36add",sid:"51621",cid:"41471"},{name:"Adalya Mola",city_id:"bdac5449-a6e2-47b0-af74-b9020a3939de",station_id:"fcf6bb5d-6a80-48e9-9bb9-c95dd3c6b22d",sid:"51851",cid:"42712"},{name:"Çalhan Mola",city_id:"948db614-cc7b-4f5d-be18-334f77fbcf76",station_id:"ff70e073-b8b9-4186-a3ec-4f1b5890f813",sid:"51501",cid:"0"},{name:"Abdipaşa",station_id:"18395596-1053-4079-91e3-967f76d84b3a",city_id:"18395596-1053-4079-91e3-967f76d84b3a",sid:"56711",cid:"47161"},{name:"Hayrettin",station_id:"c6b935cd-7a09-4afc-9bb5-8f5cefe16d72",city_id:"c6b935cd-7a09-4afc-9bb5-8f5cefe16d72",sid:"56881",cid:"47291"},{name:"Silifke",station_id:"ec2fb6e5-5dfc-4921-b8f1-fd8b355d20dc",city_id:"ec2fb6e5-5dfc-4921-b8f1-fd8b355d20dc",sid:"79983",cid:"95353"},{name:"Kelkit",station_id:"f158379d-1589-4f7f-b6e2-bc1688f08904",city_id:"f158379d-1589-4f7f-b6e2-bc1688f08904",sid:"64481",cid:"61271"},{name:"İznik Sakarya Kalkış",station_id:"67dbf083-2afe-4a59-977b-376975619f30",city_id:"67dbf083-2afe-4a59-977b-376975619f30",sid:"49821",cid:"41161"},{name:"Topçular Yalova",station_id:"ddd98513-af90-4615-bc75-1ebe102c7888",city_id:"ddd98513-af90-4615-bc75-1ebe102c7888",sid:"56921",cid:"42502"},{name:"Ağaçlı Mola",station_id:"3864ecb8-1e44-4665-b5f5-a77e80137cc0",city_id:"3864ecb8-1e44-4665-b5f5-a77e80137cc0",sid:"68791",cid:"64301"},{name:"Çavuşlu Mola",station_id:"5ab89ec5-7647-4d33-9b8d-3b7959a9e17a",city_id:"5ab89ec5-7647-4d33-9b8d-3b7959a9e17a",sid:"56031",cid:"41051"},{name:"Konakoğlu Mola",station_id:"bcfb5ed6-ba43-4cf0-af63-f2c2876b4612",city_id:"bcfb5ed6-ba43-4cf0-af63-f2c2876b4612",sid:"56731",cid:"42582"},{name:"Onur Park Mola",station_id:"dedea8e7-dfc5-4100-961c-fc4dadd38cec",city_id:"dedea8e7-dfc5-4100-961c-fc4dadd38cec",sid:"56041",cid:"40601"},{name:"Akkuşlar Mola",station_id:"f4ae00fd-b148-4fc4-97c0-833aa3519842",city_id:"f4ae00fd-b148-4fc4-97c0-833aa3519842",sid:"56471",cid:"47051"},{name: "Yamuçlar",city_id:"6dc3455e-dad2-4192-a216-5f8b0e4621e2",station_id:"63518312-9938-4fb1-b0af-1048abfe6ddd",sid:"0",cid:"0"},{name: "Artova",city_id:"415454a8-e04b-4eb2-ab65-5d07fad62852",station_id:"6d52611d-433d-4464-8fb1-de719bb32a67",sid:"0",cid:"0"},{name: "Yeşilyurt",city_id:"bae3ab5b-ce8e-48a5-8ab6-6ee0bdb125c0",station_id:"9ada52c9-c8e0-4ead-8a06-63523418c547",sid:"0",cid:"0"},{name: "Sulusaray",city_id:"9839c0e1-3c2e-4349-acb7-86a79c181bf7",station_id:"b6a25cb8-528b-4054-9511-22e5685092fc",sid:"0",cid:"0"},{name:"Bursa Şükraniye",station_id:"39d6b53c-4e80-43e9-8d75-5778787ace0a",city_id:"39d6b53c-4e80-43e9-8d75-5778787ace0a",sid:"0",cid:"0"},{name:"Bursa İhsaniye",station_id:"3c5e5769-091e-4f21-8b56-59fe3cc6dc00",city_id:"3c5e5769-091e-4f21-8b56-59fe3cc6dc00",sid:"0",cid:"0"},{name:"Bursa Yıldırım",station_id:"f52b4e3a-887d-4a72-b881-dcb5e8548ceb",city_id:"f52b4e3a-887d-4a72-b881-dcb5e8548ceb",sid:"0",cid:"0"}]
+</script>
+<!---------------------------------------------------------------------->
+<script>
+function ugec(e){return(document.getElementsByClassName(e))}
+function ugid(e){return(document.getElementById(e))}
+function dot_tarih(){
+	return(tarih.split("-")[2]+"."+tarih.split("-")[1]+"."+tarih.split("-")[0]);
+}
+function logo(){
+	var load=document.createElement("div");
+	load.id="loading";
+	document.body.appendChild(load);
+	var _img=document.createElement("img");
+	_img.className="logo";
+	_img.src="data:image/jpg;base64,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";
+	document.getElementById("loading").appendChild(_img);
+}
+function pclose(close_elem){
+	ugec(close_elem)[0].remove();
+}
+function kopyala(el) {
+	var el_table= document.getElementById(el);
+	var range= document.createRange();
+	range.selectNodeContents(el_table);
+	var secim= window.getSelection();
+	secim.removeAllRanges();
+	secim.addRange(range);
+	var kopi=document.execCommand("copy");
+	if(kopi){
+		document.getElementsByClassName("kopyala")[0].textContent="Kopyalandı";
+		setTimeout(function(){document.getElementsByClassName("kopyala")[0].textContent="Kopyala";secim.removeAllRanges();},500);
+	}else{
+		document.getElementsByClassName("kopyala")[0].textContent="Hata !!!";
+		setTimeout(function(){document.getElementsByClassName("kopyala")[0].textContent="Kopyala";secim.removeAllRanges();},500);
+	}
+}
+function active_btn(elem_id){
+	try{document.getElementsByClassName("curr")[0].classList.remove("curr")}catch{}
+	document.getElementById(elem_id).classList.add("curr");
+}
+function bgoster(ch_id){
+	var is_check=document.getElementById(ch_id).checked;
+	var _vcont=varis_elem.value;
+	if(document.getElementById("eski").checked)
+		document.getElementById("eski").checked=false
+	if(is_check){
+		if(_vcont=="Hepsi" || _vcont=="hepsi" || _vcont==""){
+			if(kalkis_elem.value.includes("İstanbul")==true)
+				varis_elem.value="Ankara";
+			else
+				varis_elem.value="İstanbul";
+		}
+	}
+}
+function clear_stop(s){
+	return(s.replaceAll("-Otogar","").replaceAll(" Otogar","").replaceAll("-Merkez","").replaceAll(" → ","→").replaceAll(" Otobüs Terminali (Ağullu)","").replaceAll("İstanbul-","").replaceAll("İstanbul ","").replaceAll("Ümraniye-Dudullu","Dudullu").replaceAll(" ","-").replaceAll("-bus-station","").replaceAll("-rest-station",""));
+}
+function ts_to_hour(ss){
+	return(new Date(ss).toTimeString().substr(0,5));
+}
+function ts_to_hour_UTC(ts){
+	return(new Date(ts).toUTCString().split(" ")[4].substr(0,5))
+}
+function number_double(t0){
+	return(t0<10?"0"+t0:t0)
+}
+function durak_deg(){
+	var _k=kalkis_elem.value;
+	var _v=varis_elem.value;
+	varis_elem.value=_k;
+	kalkis_elem.value=_v;
+}
+function date_ch(_dc){
+	var _tarih_ts=Date.parse(tarih_elem.value);
+	var gun_ts= _dc=="dun"?_tarih_ts-86400000:_tarih_ts+86400000;
+	tarih_elem.value=new Date(gun_ts).toISOString().split("T")[0];
+}
+function clear_data(){
+	data1_elem.innerHTML="";
+	data2_elem.innerHTML="";
+	data3_elem.innerHTML="";
+	data1_elem.removeAttribute("class");
+	data2_elem.removeAttribute("class");
+	data3_elem.removeAttribute("class");
+	document.getElementById("toplam").innerHTML="";
+	document.getElementById("iptal_sayi").innerHTML="";
+}
+function toExcel(){
+		var excel_veri="<head><meta charset='UTF-8' /></head><table>";
+		var table1= document.getElementById('data1');
+		for(var t1=0;t1<table1.childElementCount;t1++){
+			if(table1.children[t1].getAttribute("class").includes("iptal"))
+				excel_veri+="<tr><td style='color:red'>"+table1.children[t1].children[0].innerText+"</td></tr>";
+			else
+				excel_veri+="<tr><td>"+table1.children[t1].children[0].innerText+"</td></tr>";
+		}
+		var table2= document.getElementById('data2');
+		for(var t2=0;t2<table2.childElementCount;t2++){
+			if(table2.children[t2].getAttribute("class").includes("iptal"))
+				excel_veri+="<tr><td style='color:red'>"+table2.children[t2].children[0].innerText+"</td></tr>";
+			else
+				excel_veri+="<tr><td>"+table2.children[t2].children[0].innerText+"</td></tr>";
+		}
+		var table3= document.getElementById('data3');
+		for(var t3=0;t3<table3.childElementCount;t3++){
+			if(table3.children[t3].getAttribute("class").includes("iptal"))
+				excel_veri+="<tr><td style='color:red'>"+table3.children[t3].children[0].innerText+"</td></tr>";
+			else
+				excel_veri+="<tr><td>"+table3.children[t3].children[0].innerText+"</td></tr>";
+		}
+		excel_veri+="</table>";
+		var file_name=tarih+"_"+_kalkis+"_"+_varis+".xls";
+		var down= document.createElement("a");
+		down.href='data:application/vnd.ms-excel,'+encodeURIComponent(excel_veri);
+		down.download=file_name;
+		down.click();
+}
+
+function create_ul(sp_ap_elem, ul_ap_elem, ul_id){
+	var spVcont=document.createElement("span");
+	spVcont.className="span-cont";
+	spVcont.id=ul_ap_elem;
+	document.getElementById(sp_ap_elem).appendChild(spVcont);
+	var ulV=document.createElement("ul");
+	ulV.className="ul-cont";
+	ulV.id= ul_id;
+	document.getElementById(ul_ap_elem).appendChild(ulV);
+}
+function get_sel(th){
+	document.getElementById(th.getAttribute("sel")).value=th.innerHTML;
+	th.parentElement.parentElement.remove();
+}
+function create_li(elem_id, val,ss){
+	for(var v=0;v<val.length;v++){
+		var cli= document.createElement("li");
+		cli.className="liste";
+		cli.innerHTML=val[v];
+		if(elem_id=="ulV")
+			cli.setAttribute("sel","varis")
+		else
+			cli.setAttribute("sel","kalkis")
+		cli.setAttribute("onclick","get_sel(this)")
+		document.getElementById(elem_id).appendChild(cli);
+	}
+}
+function _opt(trg, _cont, _id){
+	create_ul(trg,_cont,_id);
+	var li_arr=[];
+	for (var i = 0; i < ndurak.length; i++) {
+		var a = ndurak[i].name;
+		if(a.search("rest")>=0)
+			a=a.replace("rest","mola");
+		li_arr.push(a)
+    }
+	create_li(_id,li_arr,"opt");
+}
+
+function capitalize(c){
+	if(c=== undefined){
+		console.log("undef");
+		return;
+	}
+	var cap="";
+	var _cap1=false;
+	if(c.includes(" ")==true){
+		var c_split=c.split(" ");
+		c_split.forEach(function(d){
+			cap+=d.substr(0,1).toLocaleUpperCase()+d.substr(1).toLocaleLowerCase()+" ";
+		})
+		cap=cap.slice(0,-1)
+		_cap1=true;
+	}else
+		cap=c;
+	return(!_cap1?cap.substr(0,1).toLocaleUpperCase()+cap.substr(1).toLocaleLowerCase():cap);
+}
+function sec(_id) {
+	var elem = document.getElementById(_id);
+	var e_val = elem.value;
+	elem.setAttribute("placeholder",e_val);
+	document.getElementById(_id).value="";
+}
+function id_al(){
+	var opti_text=kalkis_elem.value;
+	if(opti_text=="")
+		kalkis_elem.value=opti_text="Ankara";
+	_kalkis=capitalize(opti_text);
+	var opti_text=varis_elem.value;
+	if(opti_text=="")
+		varis_elem.value=opti_text="Hepsi";
+	_varis=capitalize(opti_text);
+	if(_kalkis==_varis){
+		hata_yaz("hata","Duraklar aynı");
+		return(false);
+	}
+	city_kalkis=ndurak.find(_kn=>_kn.name==_kalkis).city_id;
+	city_varis=ndurak.find(_kn=>_kn.name==_varis).city_id;
+	station_kalkis=ndurak.find(_kn=>_kn.name==_kalkis).station_id;
+	station_varis=ndurak.find(_kn=>_kn.name==_varis).station_id;
+	sid_kalkis=ndurak.find(_kn=>_kn.name==_kalkis).sid;
+	sid_varis=ndurak.find(_kn=>_kn.name==_varis).sid;
+}
+function v_sec(_vs){
+	active_btn(_vs);
+	if(id_al()==false)
+		return;
+	tarih=tarih_elem.value;
+	if(bilet_elem.checked==false)
+			document.getElementById("eski").checked ? vardiya2(_vs):vardiya(_vs)
+	else{
+		if(_vs!="ara"){
+			bilet_elem.checked=false;
+			varis_elem.value="Hepsi";
+			document.getElementById("eski").checked ? vardiya2(_vs):vardiya(_vs);
+		}else
+			(sid_kalkis=="1" || sid_varis=="1") ? hata_yaz("hata","Durak seçin"):	bilet_satis();
+	}
+}
+function vardiya_saat(vs){
+	var gun_basi=new Date(tarih), t1, t2;
+	if(vs=="gece"){
+		gun_basi.setHours(00,00,00,00);
+		t1=gun_basi.toISOString().split(".")[0]+"Z";
+		gun_basi.setHours(08,00,00,00);
+		t2=gun_basi.toISOString().split(".")[0]+"Z";
+		return(t1+"/"+t2)
+	}else if(vs=="sabah"){
+		gun_basi.setHours(08,00,00,00);
+		t1=gun_basi.toISOString().split(".")[0]+"Z";
+		gun_basi.setHours(16,00,00,00);
+		t2=gun_basi.toISOString().split(".")[0]+"Z";
+		return(t1+"/"+t2)
+	}else if(vs=="aksam"){
+		gun_basi.setHours(16,00,00,00);
+		t1=gun_basi.toISOString().split(".")[0]+"Z";
+		gun_basi.setHours(23,59,59,59);
+		t2=gun_basi.toISOString().split(".")[0]+"Z";
+		return(t1+"/"+t2)
+	}else if(vs=="iptal" || vs=="ara"){
+		gun_basi.setHours(00,00,00,00);
+		t1=gun_basi.toISOString().split(".")[0]+"Z";
+		gun_basi.setHours(23,59,59,59);
+		t2=gun_basi.toISOString().split(".")[0]+"Z";
+		return(t1+"/"+t2)
+	}
+}
+var _tarih=new Date().toLocaleDateString();
+tarih=_tarih.split(".")[2]+"-"+_tarih.split(".")[1]+"-"+_tarih.split(".")[0]
+document.getElementById("tarih").value=tarih;
+document.onkeydown = function(q1){
+	if(ugid("ulK")==undefined && ugid("ulV")==undefined && q1.key =="Enter")
+		ugid("ara").click();
+	if(ugid("ulK") || ugid("ulV")){
+		var sec_id=ugid("ulK")?"ulK":"ulV";
+		if(q1.code=="ArrowDown"){
+			if(document.querySelectorAll("[data-sec]").length==0){
+				ugid(sec_id).children[0].setAttribute("data-sec","");
+				document.querySelectorAll("[data-sec]")[0].classList.add("liste-active");
+			}else{
+				var sec_el=document.querySelectorAll("[data-sec]");
+				sec_el[0].removeAttribute("data-sec");
+				sec_el[0].nextSibling.setAttribute("data-sec","")
+				sec_el[0].classList.remove("liste-active");
+				sec_el[0].nextSibling.classList.add("liste-active");
+			}
+		}else if(q1.code=="ArrowUp"){
+			if(document.querySelectorAll("[data-sec]").length==0){
+				return;
+			}else{
+				var sec_el=document.querySelectorAll("[data-sec]");
+				sec_el[0].removeAttribute("data-sec");
+				sec_el[0].previousSibling.setAttribute("data-sec","")
+				sec_el[0].classList.remove("liste-active");
+				sec_el[0].previousSibling.classList.add("liste-active");
+			}
+		}else if(q1.key=="Enter"){
+			var sec_ok=document.querySelectorAll("[data-sec]");
+			if(ugid("ulK")){
+				ugid("kalkis").value=sec_ok[0].innerText;
+				sec_ok[0].classList.remove("liste-active");
+				sec_ok[0].removeAttribute("data-sec");
+				ugid("spKcont").remove()
+			}
+			if(ugid("ulV")){
+				ugid("varis").value=sec_ok[0].innerText;
+				sec_ok[0].classList.remove("liste-active");
+				sec_ok[0].removeAttribute("data-sec");
+				ugid("spVcont").remove()
+			}
+		}
+	}
+}
+varis_elem=document.getElementById("varis");
+kalkis_elem=document.getElementById("kalkis");
+tarih_elem=document.getElementById("tarih");
+data1_elem=document.getElementById("data1");
+data2_elem=document.getElementById("data2");
+data3_elem=document.getElementById("data3");
+bilet_elem=document.getElementById("bilet");
+document.addEventListener("click",function(ev){
+    if(ev.target.localName!="li" && ev.target.id!="kalkis" && ev.target.id!="varis"){
+		if(document.getElementById("ulK"))
+			document.getElementById("spKcont").remove()
+	if(document.getElementById("ulV"))
+		document.getElementById("spVcont").remove()
+	}
+})
+varis_elem.addEventListener("change",function(){
+	if(this.value=="Hepsi" || this.value=="hepsi"){
+		if(bilet_elem.checked)
+			bilet_elem.checked=false;
+	}
+});
+varis_elem.addEventListener("focus",function(){
+	if(document.getElementById("spVcont")===null)
+		_opt("_varis","spVcont","ulV");
+	if(document.getElementById("ulK"))
+		document.getElementById("spKcont").remove()
+})
+varis_elem.addEventListener("input", function(){
+	varis_elem.value=capitalize(this.value);
+	try{document.getElementById("spVcont").remove()}catch{}
+	create_ul("_varis","spVcont","ulV");
+	var vli_arr=[]
+	ndurak.forEach(function(df){
+		if((df.name).includes(varis_elem.value))
+			vli_arr.push(df.name);
+		else if((df.name).includes(varis_elem.value.toLocaleLowerCase()))
+			vli_arr.push(df.name)
+	})
+	create_li("ulV",vli_arr);
+	if(document.getElementById("ulV").children.length==0)
+		document.getElementById("spVcont").remove()
+});
+kalkis_elem.addEventListener("change",function(){
+	if(this.value=="Hepsi" || this.value=="hepsi"){
+		if(bilet_elem.checked)
+			bilet_elem.checked=false;
+	}
+});
+kalkis_elem.addEventListener("focus",function(){
+	if(document.getElementById("spKcont")===null)
+		_opt("_kalkis","spKcont","ulK");
+	if(document.getElementById("ulV"))
+		document.getElementById("spVcont").remove()
+})
+kalkis_elem.addEventListener("input", function(){
+	kalkis_elem.value=capitalize(this.value)
+	try{document.getElementById("spKcont").remove()}catch{}
+	create_ul("_kalkis","spKcont","ulK");
+	var kli_arr=[]
+	ndurak.forEach(function(df){
+		if((df.name).includes(kalkis_elem.value)){
+			kli_arr.push(df.name)
+		}else if((df.name).includes(kalkis_elem.value.toLocaleLowerCase()))
+			kli_arr.push(df.name)
+		try{document.getElementById("spKcont").getElementsByTagName("li")[0].active}catch{}
+	})
+	create_li("ulK",kli_arr);
+	if(document.getElementById("ulK").children.length==0)
+		document.getElementById("spKcont").remove()
+
+});
+document.getElementById("eski").addEventListener("change",function(){
+	if(bilet_elem.checked)
+		bilet_elem.checked=false;
+})
+kalkis_elem.value=ndurak[1].name;
+varis_elem.value=ndurak[0].name;
+pen=0;sayfa=0;
+
+</script>
+
+<!----------------------------------------------------------------------->
+
+<script>
+function kid_to_vid(dlist){
+	if(dlist.indexOf(dlist.find(u1=>u1.uuid==station_kalkis))<dlist.indexOf(dlist.find(u2=>u2.uuid==station_varis)))
+		return(true)
+	else
+		return(false)
+}
+function saat_getir(_trip_uid_sefer){
+	var sveri, dep_ts, ilk, ilk_ts, fark, fark2, son_fark, s_elem, zaman, sdurak, _day, _saat, _min, _sefer, _trip_uid, saat_link;
+	_trip_uid=_trip_uid_sefer.split(";")[0].replace("direct:","")
+	_sefer=_trip_uid_sefer.split(";")[1]
+	if(sid_varis=="1")
+		saat_link="https://global.api.flixbus.com/gis/v1/ride/"+_trip_uid+"/trip-info/planned?from_station_uuid="+station_kalkis;
+	else{
+		saat_link="https://global.api.flixbus.com/gis/v1/ride/"+_trip_uid+"/trip-info/planned?from_station_uuid="+station_kalkis+"&to_station_uuid="+station_varis;
+	}
+	logo();
+	fetch(saat_link)
+	.then(r=>r.json())
+	.then(function(sdata){
+		sdurak=sdata.stops;
+		_day=sdata.duration.day;
+		_saat=sdata.duration.hour;
+		_min=sdata.duration.minute;
+		if(_saat<10) _saat= "0"+_saat;
+		if(_min<10) _min="0"+_min;
+		zaman=_day>0?_day+" gün "+_saat+":"+_min:_saat+":"+_min;
+		sveri="<div class='pl_detay mavi'>"+sdata.line_code+" - "+_sefer+" - Süre : "+zaman+"<button id='pclose' onclick=pclose('popCont')>Kapat</button></div><div class='saat_C'><table class='saatCont' id='saat_table'>";
+		dep_ts=0;
+		ilk=false;
+		sdurak.forEach(function(sd){
+			if(sd.arrival==undefined){
+				dep_ts=sd.departure.timestamp*1000
+				ilk_ts=ts_to_hour(dep_ts);
+				sveri+="<tr class='saat_data'><td class='saat_durak'>"+sd.station.name+"</td><td class='saat_sure'></td><td class='saat_sure'>"+ilk_ts+"</td></tr>";
+			}else {
+				if(sd.departure!=undefined){
+					if(dep_ts==0){
+						dep_ts=sd.departure.timestamp*1000;
+						ilk=true;
+					}
+					fark=ts_to_hour_UTC(sd.arrival.timestamp*1000-dep_ts);
+					fark2=ts_to_hour_UTC(sd.departure.timestamp*1000-sd.arrival.timestamp*1000);
+					if(ilk){
+						sveri+="<tr class='saat_data'><td class='saat_durak'>"+sd.station.name+"</td><td class='saat_sure'>"+fark2+"</td><td class='saat_sure'>"+ts_to_hour(sd.departure.timestamp*1000)+"</td></tr>";
+					ilk=false;
+					}else{
+						sveri+="<tr class='saat_data2'><td class='saat_durak'></td><td class='saat_sure'>"+fark+"</td><td class='saat_sure'>"+ts_to_hour(sd.arrival.timestamp*1000)+"</td></tr><tr class='saat_data'><td class='saat_durak'>"+sd.station.name+"</td><td class='saat_sure'>"+fark2+"</td><td class='saat_sure'>"+ts_to_hour(sd.departure.timestamp*1000)+"</td></tr>";
+					
+					}
+					dep_ts=sd.departure.timestamp*1000;
+				}
+			}
+			if(sd.departure==undefined){
+				son_fark=ts_to_hour_UTC(sd.arrival.timestamp*1000-dep_ts);
+				sveri+="<tr class='saat_data2'><td class='saat_durak'></td><td class='saat_sure'>"+son_fark+"</td><td class='saat_sure'>"+ts_to_hour(sd.arrival.timestamp*1000)+"</td></tr><tr class='saat_data'><td class='saat_durak'>"+sd.station.name+"</td><td class='saat_sure'></td><td class='saat_sure'>"+ts_to_hour(sd.arrival.timestamp*1000)+"</td></tr>";
+			}
+		})
+		sveri+="</table><button class='kopyala' onclick=kopyala('saat_table')>Kopyala</button></div><div class='foot'></div>";
+		s_elem=document.createElement("div");
+		s_elem.className="popCont";
+		document.body.appendChild(s_elem);
+		s_elem.innerHTML=sveri;
+		document.getElementById("loading").remove();
+	}).catch(function(err){
+		console.log(err);
+		document.getElementById("loading").remove();
+	});
+}
+function saat_getir_trip(_trip_uid_sefer){
+	var sveri, ilk_ts, fark, fark2, son_fark, s_elem, zaman, sdurak, _saat, _min, _sefer, _trip_uid, saat_link;
+	_trip_uid=_trip_uid_sefer.split(";")[0]
+	_sefer=_trip_uid_sefer.split(";")[1]
+	saat_link="https://whereismy.flixbus.com/api/v1/trips/info/tr/"+_trip_uid;
+	logo();
+	fetch(saat_link)
+	.then(r=>r.json())
+	.then(function(sdata){
+		sdurak=sdata.trips[0].stops;
+		_saat=sdata.duration.hour;
+		_min=sdata.duration.minutes;
+		if(_saat<10) _saat= "0"+_saat;
+		if(_min<10) _min="0"+_min;
+		zaman=_saat+":"+_min;
+		sveri="<div class='pl_detay mavi'>"+sdata.trips[0].line_code+" - "+_sefer+" - Süre : "+zaman+"<button id='pclose' onclick=pclose('popCont')>Kapat</button></div><div class='saat_C'><table class='saatCont' id='saat_table'>";
+		for(var sd=0;sd<sdurak.length;sd++){
+			if(sd==0){
+				ilk_ts=ts_to_hour(sdurak[sd].departure.timestamp*1000);
+				sveri+="<tr class='saat_data'><td class='saat_durak'>"+sdurak[sd].station.name+"</td><td class='saat_sure'></td><td class='saat_sure'>"+ilk_ts+"</td></tr>";
+			}else if(sd<sdurak.length-1){
+				fark=ts_to_hour(sdurak[sd].arrival.timestamp*1000-sdurak[sd-1].departure.timestamp*1000);
+				fark2=ts_to_hour(sdurak[sd].departure.timestamp*1000-sdurak[sd].arrival.timestamp*1000);
+				sveri+="<tr class='saat_data2'><td class='saat_durak'></td><td class='saat_sure'>"+fark+"</td><td class='saat_sure'>"+ts_to_hour(sdurak[sd].arrival.timestamp*1000)+"</td></tr><tr class='saat_data'><td class='saat_durak'>"+sdurak[sd].station.name+"</td><td class='saat_sure'>"+fark2+"</td><td class='saat_sure'>"+ts_to_hour(sdurak[sd].departure.timestamp*1000)+"</td></tr>";
+			}else if(sd==sdurak.length-1){
+				son_fark=ts_to_hour(sdurak[sd].arrival.timestamp*1000-sdurak[sd-1].departure.timestamp*1000);
+				sveri+="<tr class='saat_data2'><td class='saat_durak'></td><td class='saat_sure'>"+son_fark+"</td><td class='saat_sure'>"+ts_to_hour(sdurak[sd].arrival.timestamp*1000)+"</td></tr><tr class='saat_data'><td class='saat_durak'>"+sdurak[sd].station.name+"</td><td class='saat_sure'></td><td class='saat_sure'>"+ts_to_hour(sdurak[sd].arrival.timestamp*1000)+"</td></tr>";
+			}
+		}
+
+		sveri+="</table><button class='kopyala' onclick=kopyala('saat_table')>Kopyala</button></div><div class='foot'></div>";
+		s_elem=document.createElement("div");
+		s_elem.className="popCont";
+		document.body.appendChild(s_elem);
+		s_elem.innerHTML=sveri;
+		document.getElementById("loading").remove();
+	}).catch(function(err){
+		console.log(err);
+		document.getElementById("loading").remove();
+	});
+}
+function data_yaz2(c,_title, f_trip_uid, _sefer, _blt_link, rtr){
+	var _trip_uid=f_trip_uid.split(";")[0];
+	_blt_link=_blt_link.replaceAll(" ","é")
+	var radar="https://radar.gis.flixbus.com/?rideId="+_trip_uid.replace("direct:","");
+	var ride_link="https://rideviewer.flixbus.com/ride-view/"+_trip_uid.replace("direct:","")+"/reservations";
+	var yaz='<div class="'+c+'"><div class="veri1 cur" onclick=go_ticket("'+_blt_link+'") title="'+_title+'">'+_sefer+'</div><div class="rotar cur" title="'+rtr+'" onclick=window.open("'+radar+'")>'+rtr+'</div><div class="veri2"><a href="'+ride_link+'" target="_blank">Rid</a></div><div class="cur veri4"  onclick=saat_getir("'+_trip_uid+';'+_sefer+'")>Guz</div></div>';
+	return(yaz);
+}
+async function radar_old(rride){
+	var rlink, ro, ride_uuid, radar;
+	rlink="https://whereismy.flixbus.com/api/v1/trips/info/tr/"+rride;
+	ro=await fetch(rlink)
+	.then(r=>r.json())
+	.then(function(v){
+		ride_uuid=v.trips[0].ride_uuid;
+		radar="https://radar.gis.flixbus.com/?rideId="+ride_uuid;
+		window.open(radar);
+	})
+}
+function data_yaz2_old(c,_title, f_trip_uid, _sefer, _blt_link, rtr){
+	var trip_uuid, ride_link, yaz;
+	_trip_uid=f_trip_uid.split(";")[0];
+	_blt_link=_blt_link.replaceAll(" ","é")
+	ride_link="https://rideviewer.flixbus.com/ride-view/"+_trip_uid.split(":")[1]+"/reservations";
+	yaz='<div class="'+c+'"><div class="veri1 cur" onclick=go_ticket("'+_blt_link+'") title="'+_title+'">'+_sefer+'</div><div class="rotar cur" title="'+rtr+'" onclick=radar_old("'+_trip_uid+'")>'+rtr+'</div><div class="veri2"><a href="'+ride_link+'" target="_blank">Rid</a></div><div class="cur veri4"  onclick=saat_getir_trip("'+_trip_uid+';'+_sefer.replaceAll(" ","_")+'")>Guz</div></div>';
+	return(yaz);
+}
+function indirme_yaz(i_clas, ind_s, ind_uuid){
+	var ride_link="https://rideviewer.flixbus.com/ride-view/"+ind_uuid+"/reservations";
+	var ind_v='<div class="'+i_clas+'"><a href="'+ride_link+'" target="_blank">'+ind_s+'</a></div>';
+	return(ind_v);
+}
+function bilet_yaz(_class, v1_class, koltuk_clas, _sefer,_fiyat,_bos,_trip_uid,_blt_link,_peron){
+	var sefer_tipi, ilk_sefer, guz_div, ride_link, yaz;
+	sefer_tipi=_trip_uid.split(":")[0]
+	if(sefer_tipi=="interconnection"){
+		ilk_sefer=_trip_uid.split(":")[3].split("/")[1]
+		guz_div='<div class="veri22 cur"></div>'
+	}else{
+		ilk_sefer=_trip_uid.split(":")[1];
+		guz_div='<div class="veri22 cur" onclick=saat_getir_trip("'+_trip_uid+';'+_sefer.replaceAll(" ","_")+'")>Güz</div>'
+	}
+	if(_peron==undefined)
+		_peron="";
+	ride_link="https://rideviewer.flixbus.com/ride-view/"+ilk_sefer+"/reservations";
+	yaz='<div class="'+_class+'"><div class="'+v1_class+'"><a href="'+_blt_link+'" target="_blank" title="'+_sefer+'">'+clear_stop(_sefer)+'</a></div><div class="peron" title="'+_peron+'">'+_peron+'</div><div class="veri2">'+_fiyat+'</div><div class="veri2"><a href="'+ride_link+'" target="_blank" title="Rideviewer">'+_bos+'</a></div>'+guz_div+'</div>';
+	return(yaz);
+
+}
+function hata_yaz(c,_hata){
+	clear_data();
+	data1_elem.innerHTML="<div class='"+c+"'>"+_hata+"</a></div>";
+}
+function get_pen(dlen){
+	var yuk=screen.height;
+	gen=screen.width;
+	sayfa=yuk<=1050?25:35;
+	sayfa=yuk<=768?20:25;
+	pen=gen<=510?1:3;
+}
+function datayaz3(arr_data, _tur){
+	var data_len=arr_data.length;
+	get_pen(data_len);
+	if(pen==1){
+		data2_elem.classList.add("gizle");
+		data3_elem.classList.add("gizle");
+	}
+	if(pen==3){
+		data1_elem.classList.add("pen3");
+		data2_elem.classList.add("pen3");
+		data3_elem.classList.add("pen3");
+	}
+	if(data_len>(sayfa*pen))
+		sayfa=Math.ceil(data_len/pen);
+	var dat1="", dat2="", dat3="";
+	for(var d=0;d<arr_data.length;d++){
+		if(d<sayfa)
+			dat1+=arr_data[d];
+		else if(d>=sayfa && d<sayfa*2)
+			dat2+=arr_data[d];
+		else if(pen>=3 && d>=sayfa*2)
+			dat3+=arr_data[d];
+	}
+	if(dat1.length>0)
+		data1_elem.innerHTML=dat1;
+	if(dat2.length>0)
+		data2_elem.innerHTML=dat2;
+	if(dat3.length>0)
+		data3_elem.innerHTML=dat3;
+	//arr_data.length=0;
+	return;
+}
+async function go_ticket(ct){
+	var to_stop, rota, vcity, to_city_name, q_to, blt_trh, bilet;
+	ct=ct.replaceAll("é"," ")
+	to_stop=ct.split(";")[1];
+	rota=ct.split(";")[2];
+	try{
+		vcity=ndurak.find(d=>d.station_id==to_stop).city_id;
+	}catch{
+		to_city_name=rota.split(" → ")[1].split(" ")[0];
+		q_to="https://searchmask-autocomplete.k8s.flixbus.com/q?q="+to_city_name+"&lang=en&flixbus_cities_only=false";
+		const t_sor= await fetch(q_to)
+		.then(r=>r.json())
+		.then(function(tn){
+			try{
+				vcity=tn.find(n=>n.name==to_city_name).id
+			}catch{vcity=to_stop}
+		})
+	}
+	blt_trh=Date.parse(new Date())>Date.parse(tarih)?new Date().toLocaleDateString():dot_tarih();
+	bilet="https://shop.flixbus.com.tr/search?departureCity="+city_kalkis+"&arrivalCity="+vcity+"&rideDate="+blt_trh+"&adult=1&_locale=tr";
+	window.open(bilet);
+}
+function bilet_satis(){
+	clear_data();
+	var bt=tarih_elem.value.split("-");
+	var btf=tarih_elem.value;
+	var bt_format=bt[2]+"."+bt[1]+"."+bt[0];
+	if(city_kalkis=="0"){
+		hata_yaz("hata","Kalkış durağı aktif değil");
+		return;
+	}
+	if(city_varis=="0"){
+		hata_yaz("hata","Varış durağı aktif değil");
+		return;
+	}
+	if(city_varis=="1"){
+		hata_yaz("hata","Varış durağı seçin<br>Veya işareti kaldırın");
+		return;
+	}
+	var _blink1="https://search.k8s.flixbus.com/api/v4/search?from_city_id=";
+	var _blink2="&to_city_id=";
+	var _blink3="&departure_date=";
+	var _blink4='&products=%7B"adult"%3A1%7D&currency=TRY&locale=tr&search_by=cities&include_after_midnight_rides=1';
+	var _blink=_blink1+city_kalkis+_blink2+city_varis+_blink3+bt_format+_blink4;
+	
+	var blink2="https://global.api.flixbus.com/search/service/v2/search?from_station_id="+sid_kalkis+"&to_station_id="+sid_varis+"&departure_date="+dot_tarih()+"&products=%7B%22adult%22%3A1%7D&currency=TRY&locale=tr&search_by=stations&include_after_midnight_rides=1"
+	var bilet_data=[];
+	var bilet_sefer_say=0;
+	logo();
+	fetch(blink2)
+	.then(vr=>vr.json())
+	.then(function(bdata){
+		if(bdata["translated_message"]!=undefined){
+			data1_elem.innerHTML="<div class='iptal'>"+bdata["translated_message"]+"</div>";
+			document.getElementById("loading").remove();
+			return;
+		}
+		var bsefer=bdata.trips[0].results;
+		var uid_keys=Object.keys(bsefer);
+		var veri_class, veri1_class, koltuk_class, akt_class;
+		veri_class="veri ";
+		veri1_class="bilet-veri ";
+		var bilet_trip_uid, peron, sefer_uuid, kalkis_sid, varis_sid, res_ist1;
+		var bilet_saat, bilet_tarih, bilet_bos, bilet_fiyat, bilet_kalkis, bilet_varis, bilet_sefer;
+		for(k=0;k<uid_keys.length;k++){
+			var bs=uid_keys[k];
+			bilet_trip_uid=bsefer[bs].uid;
+			peron=bsefer[bs].messages.from;
+			sefer_uuid=bsefer[bs].uid.split(":")[1];
+			if(bsefer[bs].transfer_type=="Aktarma")
+				akt_class="aktarma ";
+			else
+				akt_class="";
+			if(bsefer[bs].restrictions.sale_restriction==true && bsefer[bs].status!="full")
+				koltuk_class="hata2 ";
+			else
+				koltuk_class="";
+			kalkis_sid=bsefer[bs].departure.station_id.toString();
+			kalkis_cid=bsefer[bs].departure.city_id.toString();
+			varis_sid=bsefer[bs].arrival.station_id.toString();
+			varis_cid=bsefer[bs].arrival.city_id.toString();
+			bilet_saat=bsefer[bs]["departure"]["human_time"];
+			bilet_tarih=bsefer[bs].departure.date.split("T")[0];
+			bilet_bos=bsefer[bs].available.seats;
+			bilet_fiyat=bsefer[bs]['price']['total'];
+			if(kalkis_sid==sid_kalkis && varis_sid==sid_varis){
+				var vcity=ndurak.find(d=>d.sid==varis_sid).city_id;
+				var bilet_link="https://shop.flixbus.com.tr/search?departureCity="+city_kalkis+"&arrivalCity="+vcity+"&rideDate="+dot_tarih()+"&adult=1&_locale=tr";
+				bilet_kalkis=ndurak.find(f=>f.sid==kalkis_sid).name;
+				bilet_varis=ndurak.find(f=>f.sid==varis_sid).name;
+				bilet_sefer=bilet_saat+"-"+clear_stop(bilet_kalkis)+"→"+clear_stop(bilet_varis);
+				if(bilet_tarih==btf)
+					bilet_data.push(bilet_yaz(veri_class+akt_class,veri1_class,koltuk_class,bilet_sefer,bilet_fiyat,bilet_bos,bilet_trip_uid,bilet_link,peron));
+				else
+					bilet_data.push(bilet_yaz(veri_class+"next_day"+akt_class,veri1_class,koltuk_class,bilet_sefer,bilet_fiyat,bilet_bos,bilet_trip_uid,bilet_link,peron));
+				bilet_sefer_say++;
+			}
+		}
+		if(bilet_sefer_say==0)
+			hata_yaz("hata","Sefer Bulunamadı");
+		else
+			datayaz3(bilet_data,"b");
+		document.getElementById("toplam").innerHTML=bilet_sefer_say;
+		document.getElementById("loading").remove();
+	}).catch(function(err){
+		if(err=="TypeError: Failed to fetch"){
+			hata_yaz("hata","Bağlantı hatası");
+			document.getElementById("toplam").innerHTML="";
+			document.getElementById("iptal_sayi").innerHTML="Hata";
+		}
+		else{
+			hata_yaz("hata","Hata oluştu");
+			document.getElementById("toplam").innerHTML="";
+			document.getElementById("iptal_sayi").innerHTML="Hata";
+		}
+		console.log("hata"+err);
+		document.getElementById("loading").remove();
+	});
+
+}
+function vardiya(_v){
+	clear_data();
+	if(kalkis_elem.value=="istanbul")
+		kalkis_elem.value="istanbul-esenler";
+	if(sid_kalkis==0){
+		hata_yaz("hata","Kalkış durağı seçilmedi");
+		return;
+	}
+	if(sid_varis==0){
+		hata_yaz("hata","Varış durağı seçilmedi");
+		return;
+	}
+	var tarih_ts=new Date(tarih);
+	if(_v=="gece"){
+		t1=tarih_ts.setHours(00,00,00,00);
+		t2=tarih_ts.setHours(08,00,00,00);
+	}else if(_v=="sabah"){
+		t1=tarih_ts.setHours(08,00,00,00);
+		t2=tarih_ts.setHours(16,00,00,00);
+	}else if(_v=="aksam"){
+		t1=tarih_ts.setHours(16,00,00,00);
+		t2=tarih_ts.setHours(23,59,59,59);
+	}else if(_v=="iptal" || _v=="ara"){
+		t1=tarih_ts.setHours(00,00,00,00);
+		t2=tarih_ts.setHours(23,59,59,59);
+	}
+	var new_link0="https://global.api.flixbus.com/gis/v1/station/";
+	var new_link2="/timetable/departures/from-timestamp/";
+	var new_link2_ind="/timetable/arrivals/from-timestamp/";
+	var new_link3="/to-timestamp/";
+	var vlink;
+	if(sid_kalkis==1){
+		vlink=new_link0+station_varis+new_link2_ind+t1+new_link3+t2;
+		indirme(vlink);
+		return;
+	}else{
+		vlink=new_link0+station_kalkis+new_link2+t1+new_link3+t2;
+	}
+	logo();
+	var sefer_veri=[], sefer_say=0, iptal_say=0, say=0, simdi=Date.now(), id_liste="", s_liste="";
+	var dep_title, sefer_ts, t_over, sefer_guzergah, title, s_name, sefer_verisi, vline_code;
+	var t_trip_uid, kalkis_uid, varis_uid, trip_uid, sefer_class, son_durak_id;
+	fetch(vlink)
+	.then(r=>r.json())
+	.then(function(veri){
+		try{
+			if(veri.code==404){
+				if((veri.message).includes("Couldn't find data")){
+					hata_yaz("hata","Sefer Bulunamadı..");
+					document.getElementById("loading").remove();
+					return;
+				}
+			}
+		}catch{return;}
+		var departures=veri.rides;
+		for(dep in departures){
+			dep_title=departures[dep]["through_the_stations"];
+			sefer_ts=departures[dep]["planned"]["timestamp"]*1000;
+			var durak_kalkis_saat=ts_to_hour(sefer_ts);
+			var hareket_kont=false;
+			if(_v=="iptal" && departures[dep]["is_cancelled"]==false)
+				continue;
+			if(sefer_ts+(300*1000)<simdi){
+				t_over="t_over ";
+				if(departures[dep]["is_cancelled"]==true)
+					t_over="iptal_over "
+			}else
+				t_over="";
+			sefer_guzergah=departures[dep].stops;
+			title="";
+			for(st in sefer_guzergah){
+				s_name=sefer_guzergah[st].name;
+				title+=s_name+" → ";
+			}
+			title=clear_stop(title.substr(0,title.length-3));
+			sefer_verisi= durak_kalkis_saat+"-"+clear_stop(dep_title);
+			t_trip_uid=departures[dep]["ride_uuid"];
+			kalkis_uid=departures[dep]["from_stop_uuid"];
+			varis_uid=departures[dep]["to_stop_uuid"];
+			trip_uid="direct:"+t_trip_uid+";"+kalkis_uid+";"+varis_uid;
+			try{ var deviation= departures[dep]["deviation"]["deviation_seconds"]; }catch{}
+			var inter_clas=departures[dep]["line_code"].includes("TR") ? "" : "inter ";
+			var rotar= departures[dep]["deviation"]!=undefined?parseInt(deviation/60)+"dk":"R";
+			var bilet_link=departures[dep].from_stop_uuid+";"+departures[dep].to_stop_uuid+";"+dep_title;
+			if(sid_varis=="1"){
+				if(departures[dep]["is_cancelled"]==true){
+					sefer_class="iptal ";
+					iptal_say++;
+				}else
+					sefer_class="veri ";
+				if(dep_title.includes("Ankara") && dep_title.includes("İstanbul")){
+					var ist_class=sefer_guzergah.length==5 ? "ist-exp ": (sefer_guzergah.length<=4 ? "ist_exp": "")
+					sefer_veri.push(data_yaz2(sefer_class+ist_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+				}else if(dep_title.includes("Tcdd")){
+					sefer_veri.push(data_yaz2(sefer_class+"ist-exp "+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+				}else
+					sefer_veri.push(data_yaz2(sefer_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+				sefer_say++;
+			}else{
+				if((_kalkis=="Ankara" && _varis.includes("İstanbul"))|| (_kalkis.includes("İstanbul") && _varis=="Ankara")){
+					if(dep_title.includes("Ankara") && dep_title.includes("İstanbul")){
+						if(departures[dep]["is_cancelled"]==true){
+							sefer_class="iptal ";
+							iptal_say++;
+						}else
+							sefer_class="veri ";
+						sefer_verisi= durak_kalkis_saat+"-"+clear_stop(dep_title);
+						var ist_class=sefer_guzergah.length==5 ? "ist-exp ": (sefer_guzergah.length<=4 ? "ist_exp": "")
+						sefer_veri.push(data_yaz2(sefer_class+ist_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+						sefer_say++;
+						continue;
+					}
+				}
+				if(_varis.includes("Eskişehir")&& dep_title.includes("Tcdd")){
+					if(departures[dep]["is_cancelled"]==true)
+						sefer_veri.push(data_yaz2("iptal ist-exp "+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+					else
+						sefer_veri.push(data_yaz2("veri ist-exp "+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+					continue;
+				}
+				if(_varis=="İstanbul"){
+					if(departures[dep].direction.includes("İstanbul")){
+						if(departures[dep]["is_cancelled"]==true){
+							sefer_class="iptal ";
+							iptal_say++;
+						}else
+							sefer_class="veri ";
+						sefer_veri.push(data_yaz2(sefer_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+						sefer_say++;
+					}
+				}else if(kid_to_vid(sefer_guzergah)){
+					if(departures[dep]["is_cancelled"]==true){
+						sefer_class="iptal ";
+						iptal_say++;
+					}else
+						sefer_class="veri ";
+					sefer_veri.push(data_yaz2(sefer_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+					sefer_say++;
+				}
+			}
+		}
+		if(sefer_say==0)
+			hata_yaz("hata","Sefer Bulunamadı");
+		else
+			datayaz3(sefer_veri);
+		document.getElementById("toplam").innerHTML=sefer_say+" - ";
+		document.getElementById("iptal_sayi").innerHTML=iptal_say;
+		document.getElementById("loading").remove();
+
+	})
+	.catch(function(err){
+		if(err=="TypeError: Failed to fetch"){
+			hata_yaz("hata","Bağlantı hatası");
+			document.getElementById("toplam").innerHTML="";
+			document.getElementById("iptal_sayi").innerHTML="Hata";
+		}
+		else{
+			hata_yaz("hata","Hata oluştu");
+			document.getElementById("toplam").innerHTML="";
+			document.getElementById("iptal_sayi").innerHTML="Hata";
+		}
+		console.log(err);
+		document.getElementById("loading").remove();
+	});
+}
+function vardiya2(_v){
+	if(sid_kalkis==0 || sid_kalkis==1){
+		hata_yaz("hata","Kalkış durağı seçilmedi");
+		return;
+	}
+	if(sid_varis==0){
+		hata_yaz("hata","Varış durağı seçilmedi");
+		return;
+	}
+	clear_data();
+	active_btn(_v);
+	if(_v=="iptal")
+		document.getElementById("varis").value="Hepsi";
+	v_saat=vardiya_saat(_v);
+	vlink="https://whereismy.flixbus.com/api/v1/rides/tr/"+sid_kalkis+"/"+v_saat;
+	var sefer_veri=[];
+	var sefer_say=0;
+	var iptal_say=0;
+	document.getElementById("toplam").innerHTML="Yükleniyor";
+	say=0;
+	logo();
+	simdi=Date.now();
+	fetch(vlink)
+	.then(r=>r.json())
+	.then(function(veri){
+		arrivals=veri.timetable.arrivals;//seçilen durağa gelen seferler
+		departures=veri.timetable.departures;//seçilen duraktan giden seferler
+		for(dep in departures){
+			varis_durak=departures[dep]["direction"].split("-")[0];
+			if(varis_durak=="Kaş Otobüs Terminali (Ağullu)")
+				varis_durak="Kaş";
+			ride_id=departures[dep]["ride_id"];
+			route=departures[dep].route;
+			if(_v=="iptal" && departures[dep]["is_cancelled"]==false)
+				continue;
+			if(arrivals.find(ri=>ri.ride_id==ride_id)!=undefined){
+				ana_kalkis=clear_stop(arrivals.find(ri=>ri.ride_id==ride_id).route[0].name);
+				ana_kalkis_title=arrivals.find(ri=>ri.ride_id==ride_id).through_the_stations;
+			}else{
+				ana_kalkis=clear_stop(departures[dep]["route"][0]["name"]);
+				ana_kalkis_title="";
+			}
+			kalkis_ts=departures[dep]["datetime"]["timestamp"]*1000;
+			var durak_kalkis_saat=ts_to_hour(kalkis_ts);
+			if(kalkis_ts+(300*1000)<simdi){
+				t_over="t_over ";
+				if(departures[dep]["is_cancelled"]==true)
+					t_over="iptal_over "
+			}else
+				t_over="";
+			if(ana_kalkis_title.length>2){
+				dep_tit=departures[dep]["through_the_stations"];
+				title=ana_kalkis_title+dep_tit.substr(dep_tit.search(" → "));
+			}else
+				title=departures[dep]["through_the_stations"];
+			dep_title=departures[dep]["through_the_stations"];
+			sefer_verisi= durak_kalkis_saat+"-"+ana_kalkis+"-"+varis_durak;
+			rotar=departures[dep].station_ride_message;
+			if(rotar=="Zamanında")
+				rotar="0dk";
+			else{
+				try{
+				if(rotar.includes("dak."))
+					rotar=parseInt(rotar)+"dk";
+				}catch{
+					rotar="-"
+				}
+			}
+			if(departures[dep]["line_code"].includes("TR")==true)
+				inter_clas="";
+			else
+				inter_clas="inter "
+			if(sid_varis=="1")
+				trip_uid=departures[dep]["trip_uid"];
+			else
+				trip_uid="direct:"+ride_id+":"+sid_kalkis+":"+sid_varis;
+			if(sid_varis=="1"){
+				vcity=ndurak.find(d=>d.sid==route[route.length-1].id).city_id;
+				bilet_link="https://shop.flixbus.com.tr/search?departureCity="+city_kalkis+"&arrivalCity="+vcity+"&rideDate="+dot_tarih()+"&adult=1&_locale=tr";
+				if(_v=="iptal" || departures[dep]["is_cancelled"]==true){
+					sefer_class="iptal ";
+					iptal_say++;
+				}else
+					sefer_class="veri ";
+				if(dep_title.includes("Ankara") && dep_title.includes("İstanbul")){
+					ist_class=""
+					if(route.length==5)
+						ist_class="ist-exp ";
+					if(route.length<=4)
+						ist_class="ist_exp ";
+					sefer_veri.push(data_yaz2_old(sefer_class+ist_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+				}else if(dep_title.includes("Tcdd-Gar")){
+					sefer_veri.push(data_yaz2_old(sefer_class+"ist-exp "+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+				}else
+					sefer_veri.push(data_yaz2_old(sefer_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+				sefer_say++;
+			}else{
+				bilet_link="https://shop.flixbus.com.tr/search?departureCity="+city_kalkis+"&arrivalCity="+city_varis+"&rideDate="+dot_tarih()+"&adult=1&_locale=tr";
+				if((sid_varis=="47751" && route.findIndex(e=>e.id=="47781")>=0) || (route.findIndex(e=>e.id=="47781")>=0 && sid_kalkis=="47751") && dep_title.includes("Tcdd")){
+					//E.şehir aramasına Tcdd ekle Esk="47751" Tcdd=47781 Bursa="48921"
+					if(departures[dep]["is_cancelled"]==true)
+						sefer_veri.push(data_yaz2_old("iptal ist-exp "+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+					else
+						sefer_veri.push(data_yaz2_old("veri ist-exp "+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+				}
+				if(route.findIndex(n=>n.id==sid_varis)>=0){
+					if(departures[dep]["is_cancelled"]==true){
+						sefer_class="iptal ";
+						iptal_say++;
+					}else
+						sefer_class="veri ";
+					if((_kalkis=="Ankara" && _varis.includes("İstanbul"))|| (_kalkis.includes("İstanbul") && _varis=="Ankara")){
+						ist_class=""
+						if(route.length==5)
+							ist_class="ist-exp ";
+						if(route.length<=4)
+							ist_class="ist_exp ";
+						sefer_veri.push(data_yaz2_old(sefer_class+ist_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+					}else if(dep_title.includes("Tcdd-Gar")){
+						sefer_veri.push(data_yaz2_old(sefer_class+"ist-exp "+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+					}else
+						sefer_veri.push(data_yaz2_old(sefer_class+t_over+inter_clas,title,trip_uid,sefer_verisi,bilet_link,rotar));
+					sefer_say++;
+				}
+			}
+		}
+		if(sefer_say==0)
+			hata_yaz("hata","Sefer Bulunamadı");
+		else
+			datayaz3(sefer_veri);
+		document.getElementById("toplam").innerHTML=sefer_say+" - ";
+		document.getElementById("iptal_sayi").innerHTML=iptal_say;
+		document.getElementById("loading").remove();
+	})
+	.catch(function(err){
+		if(err=="TypeError: Failed to fetch"){
+			hata_yaz("hata","Bağlantı hatası");
+			document.getElementById("toplam").innerHTML="";
+			document.getElementById("iptal_sayi").innerHTML="Hata";
+		}
+		else{
+			hata_yaz("hata","Hata oluştu");
+			document.getElementById("toplam").innerHTML="";
+			document.getElementById("iptal_sayi").innerHTML="Hata";
+		}
+		console.log(err);
+		document.getElementById("loading").remove();
+	});
+}
+function indirme(_i){
+	logo();
+	var ind_veri_arr=[];
+	fetch(_i)
+	.then(r=>r.json())
+	.then(function(veri){
+		if(veri.code==404 || veri.rides.length==0){
+			hata_yaz("hata","Sefer Bulunamadı");
+			document.getElementById("loading").remove();
+			return;
+		}
+		var arrivals=veri.rides;
+		var ind_iptal=0, ind_clas, ind_trip_uid, ind_varis, son_durak, ind_ts, _ind_sefer;
+		for(var ar=0;ar<arrivals.length;ar++){
+			var is_iptal=arrivals[ar]["is_cancelled"];
+			if(is_iptal==true){
+				ind_clas="iptal";
+				ind_iptal++;
+			}else
+				ind_clas="veri";
+			ind_trip_uid=arrivals[ar]["ride_uuid"];
+			ind_varis=(arrivals[ar]["through_the_stations"]).replaceAll("-Otogar","").replaceAll(" Otogar","").replaceAll("-Merkez","").replaceAll(" → ","→").replaceAll(" Otobüs Terminali (Ağullu)","").replaceAll("İstanbul-","").replaceAll(" ","-").replaceAll("-bus-station","");
+			son_durak=ind_varis.split("→")[1]
+			if(_varis.includes(son_durak))
+				ind_clas="veri ist-e5";
+			ind_ts=(new Date(arrivals[ar]["planned"]["timestamp"]*1000).toLocaleTimeString()).substr(0,5);
+			_ind_sefer=ind_ts+"-"+ind_varis;
+			ind_veri_arr.push(indirme_yaz(ind_clas, _ind_sefer,ind_trip_uid));
+		}
+		document.getElementById("loading").remove();
+		datayaz3(ind_veri_arr);
+		document.getElementById("toplam").innerHTML=arrivals.length+" ";
+		document.getElementById("iptal_sayi").innerHTML=" - "+ind_iptal;
+	}).catch(function(err){
+		if(err=="TypeError: Failed to fetch"){
+			hata_yaz("hata","Bağlantı hatası");
+			document.getElementById("toplam").innerHTML="";
+			document.getElementById("iptal_sayi").innerHTML="Hata";
+		}
+		else{
+			hata_yaz("hata","Hata oluştu");
+			document.getElementById("toplam").innerHTML="";
+			document.getElementById("iptal_sayi").innerHTML="Hata";
+		}
+		console.log(err);
+		document.getElementById("loading").remove();
+	});
+}
+</script>
+</body>
+</html>
